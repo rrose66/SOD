@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2018.3">
+  <Nodes>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+        <Position x="198" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupFields>
+            <Field field="SOD_TEAM_MEMBER" />
+            <Field field="SOD_ROLE" />
+            <Field field="Access Control" />
+            <Field field="Access Quality Assurance Data" />
+            <Field field="Access Production Source Code Libraries" />
+            <Field field="Use Database Management Utilities" />
+            <Field field="Control Access to systems / Data" />
+          </GroupFields>
+          <HeaderField field="Conflict Col" />
+          <DataField field="Conflict Row" />
+          <Methods>
+            <Method method="First" />
+            <Separator>,</Separator>
+            <FieldSize value="2048" />
+          </Methods>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="SOD_TEAM_MEMBER" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="SOD_ROLE" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="Access Control" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="Access Quality Assurance Data" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="Access Production Source Code Libraries" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="Use Database Management Utilities" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="Control Access to systems / Data" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="D" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="G" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="H" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="K" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="N" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="_Null_" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="SOD_TEAM_MEMBER" order="Asc" />
+            <Field field="SOD_ROLE" order="Asc" />
+            <Field field="Access Control" order="Asc" />
+            <Field field="Access Quality Assurance Data" order="Asc" />
+            <Field field="Access Production Source Code Libraries" order="Asc" />
+            <Field field="Use Database Management Utilities" order="Asc" />
+            <Field field="Control Access to systems / Data" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="294" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;&quot;" field="C" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="E" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="J" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="L" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="M" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="F" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="I" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="Access Test Data" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="Use OS and management Utilities" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="Use Program Development Utility" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="Perform Data Control Functions" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;&quot;" field="Write / Modify System Software" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>C = ""
+E = ""
+J = ""
+L = ""
+M = ""
+F = ""
+I = ""
+Access Test Data = ""
+Use OS an...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="414" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="SOD_TEAM_MEMBER" selected="True" />
+            <SelectField field="SOD_ROLE" selected="True" />
+            <SelectField field="C" selected="True" />
+            <SelectField field="D" selected="True" />
+            <SelectField field="E" selected="True" />
+            <SelectField field="F" selected="True" />
+            <SelectField field="G" selected="True" />
+            <SelectField field="H" selected="True" />
+            <SelectField field="I" selected="True" />
+            <SelectField field="J" selected="True" />
+            <SelectField field="K" selected="True" />
+            <SelectField field="_Null_" selected="False" />
+            <SelectField field="L" selected="True" />
+            <SelectField field="M" selected="True" />
+            <SelectField field="N" selected="True" />
+            <SelectField field="Access Control" selected="True" />
+            <SelectField field="Access Quality Assurance Data" selected="True" />
+            <SelectField field="Access Test Data" selected="True" />
+            <SelectField field="Access Production Source Code Libraries" selected="True" />
+            <SelectField field="Use OS and management Utilities" selected="True" />
+            <SelectField field="Use Database Management Utilities" selected="True" />
+            <SelectField field="Use Program Development Utility" selected="True" />
+            <SelectField field="Perform Data Control Functions" selected="True" />
+            <SelectField field="Write / Modify System Software" selected="True" />
+            <SelectField field="Control Access to systems / Data" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>ALL_CONFLICTS.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="SOD_TEAM_MEMBER" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="SOD_ROLE" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Conflict Row" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Conflict Col" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Access Control" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Access Quality Assurance Data" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Access Production Source Code Libraries" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Use Database Management Utilities" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Control Access to systems / Data" size="255" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Manager" source="File: C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||`Sheet1$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="534" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SortInfo locale="0">
+            <Field field="SOD_ROLE" order="Ascending" />
+            <Field field="SOD_TEAM_MEMBER" order="Ascending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>SOD_ROLE - Ascending
+SOD_TEAM_MEMBER - Ascending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="666" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>!IsNull([Use Database Management Utilities])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNotNull</Operator>
+            <Field>Use Database Management Utilities</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-24 16:06:09</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-24 16:06:09</StartDate>
+              <EndDate>2019-10-24 16:06:09</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!IsNull([Use Database Management Utilities])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>DATA_TO_PASTE_INTO_SOD</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
