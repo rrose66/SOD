@@ -1,0 +1,162 @@
+Attribute VB_Name = "BAS_ETL_BOM_NO_PROD_ID"
+Option Compare Database
+
+Sub ConvertBOM_NON_PROD_ID_TO_CSV()
+    Dim intEOF As Integer
+    Dim STR_SCANNED As String
+    Dim STR_PRI_KEY As String
+    Dim STR_ENVIRONMENT As String
+    Dim STR_CONFIG As String
+    Dim STR_EXT_SYSTEM As String
+    Dim STR_EXT_SERVER As String
+    Dim STR_EX_DB As String
+    Dim STR_GROUP As String
+    Dim STR_USER As String
+    Dim STR_SQL As String
+    Dim INT_REC_LEN As Integer
+    Dim INT_CONFIG_BREAK As Integer
+    Dim INT_EOF As Integer
+    Dim INT_ENV_BREAK As Integer
+    Dim INT_CURRENT_ROW As Integer
+    Dim BLN_SKIP_RECORD As Boolean
+    Dim appExcel As Excel.Application
+    Dim WB As Excel.Workbook
+    Dim WS As Excel.Worksheet
+    INT_CURRENT_ROW = 7
+    Set appExcel = CreateObject("Excel.Application")
+'    Set wb = appExcel.Workbooks.Open("Y:\ARCHIVES\FEDEBOM_DASHBOARD\External_Systems_Jun_26_2019_05_48.xlsx")
+'    Set wb = appExcel.Workbooks.Open("Y:\ARCHIVES\FEDEBOM_DASHBOARD\External_Systems_Jul_1_2019_06_30.xlsx")
+    Set WB = appExcel.Workbooks.Open("C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\BOM Non_PROD_ID.xlsx")
+    Set WS = Excel.Worksheets("All BOMF Id's")
+    Set WS = WB.Worksheets("All BOMF Id's")
+    appExcel.Visible = True
+    Dim BLN_CONTINUE As Boolean
+    BLN_CONTINUE = True
+    BLN_SKIP_RECORD = False
+    
+    With WS
+        
+        STR_SCANNED = Format(Now(), "YYYYMMDD")
+        .Cells(INT_CURRENT_ROW, 1).Select
+        Debug.Print ActiveCell.Address
+        If ActiveCell.MergeCells Then
+            STR_GROUP = .Cells(INT_CURRENT_ROW, 1)
+            INT_CURRENT_ROW = INT_CURRENT_ROW + 1
+        End If
+        
+        STR_ENVIRONMENT = .Cells(2, 1)
+        STR_CONFIG = .Cells(2, 2)
+        For INT_EOF = 3 To 200
+'            Debug.Print INT_EOF
+            INT_ENV_BREAK = Len(.Cells(INT_EOF, 1))
+            INT_REC_LEN = Len(.Cells(INT_EOF, 1)) + Len(.Cells(INT_EOF, 2)) + Len(.Cells(INT_EOF, 3)) + Len(.Cells(INT_EOF, 4)) + Len(.Cells(INT_EOF, 5))
+            If Len(.Cells(INT_EOF, 1)) > 0 Then
+                If Len(.Cells(INT_EOF, 2)) > 0 Then
+                    If (Len(.Cells(INT_EOF, 3)) + Len(.Cells(INT_EOF, 4)) + Len(.Cells(INT_EOF, 5))) = 0 Then
+                        STR_ENVIRONMENT = .Cells(INT_EOF, 1)
+                        STR_CONFIG = .Cells(INT_EOF, 2)
+                        INT_REC_LEN = 0
+                    End If
+                End If
+            End If
+'            INT_CONFIG_BREAK = Len(.Cells(INT_EOF, 1)) + Len(Trim(.Cells(INT_EOF, 5)))
+            If INT_REC_LEN > 0 Then
+                If (Len(.Cells(INT_EOF, 1)) + Len(.Cells(INT_EOF, 4)) + Len(.Cells(INT_EOF, 5))) = 0 Then
+                    If (Len(.Cells(INT_EOF, 1)) + Len(.Cells(INT_EOF, 3)) + Len(.Cells(INT_EOF, 4)) + Len(.Cells(INT_EOF, 5))) = 0 Then
+                        STR_CONFIG = .Cells(INT_EOF, 2)
+                        INT_REC_LEN = 0
+                    ElseIf (Len(.Cells(INT_EOF, 1)) + Len(.Cells(INT_EOF, 3)) + Len(.Cells(INT_EOF, 5))) = 0 Then
+                        INT_REC_LEN = 0
+                    Else
+                        INT_REC_LEN = 0
+                    End If
+                ElseIf Len(.Cells(INT_EOF, 5)) = 0 Then 'user cannot be blank
+                    INT_REC_LEN = 0
+                End If
+            End If
+            If .Cells(INT_EOF, 5) = "USERNAME" Then
+                INT_REC_LEN = 0
+            End If
+            If INT_REC_LEN > 0 Then
+'                If INT_ENV_BREAK = 0 Then
+'                    If INT_CONFIG_BREAK > 0 Then
+    '                    STR_ENVIRONMENT = .Cells(INT_EOF, 1)
+'                        If STR_ENVIRONMENT = "" Then
+'                            STR_ENVIRONMENT = "_"
+'                        End If
+'    '                    STR_CONFIG = .Cells(INT_EOF, 2)
+'                        If STR_CONFIG = "" Then
+'                            STR_CONFIG = "_"
+'                        End If
+                        STR_EXT_SYSTEM = .Cells(INT_EOF, 2)
+'                        If STR_EXT_SYSTEM = "" Then
+'                            STR_EXT_SYSTEM = "_"
+'                        End If
+                        STR_EXT_SERVER = .Cells(INT_EOF, 3)
+'                        If STR_EXT_SERVER = "" Then
+'                            STR_EXT_SERVER = "_"
+'                        End If
+                        STR_EX_DB = .Cells(INT_EOF, 4)
+'                        If STR_EX_DB = "" Then
+'                            STR_EX_DB = "_"
+'                        End If
+                        STR_USER = .Cells(INT_EOF, 5)
+'                        STR_PRI_KEY = STR_SCANNED & STR_ENVIRONMENT & STR_CONFIG & STR_EXT_SYSTEM & STR_EXT_SERVER & STR_EX_DB & STR_USER
+                        STR_SQL = ""
+                        STR_SQL = STR_SQL & "SELECT COUNT(*) FROM CMT_AD_SEARCH_RESULTS WHERE FILE_NAME = "
+                        STR_SQL = STR_SQL & Chr(34) & STR_USER & Chr(34)
+                        STR_SQL = STR_SQL & " AND ENABLED_STATUS = " & Chr(34) & "Disabled" & Chr(34)
+                        Dim RST_DISABLED As Recordset
+                        Set RST_DISABLED = CurrentDb.OpenRecordset(STR_SQL)
+'                        Stop
+'                        If STR_USER = "WWPRXIP" Then
+'                        Stop
+'                        End If
+                        If RST_DISABLED.Fields(0).Value = 0 Then
+                            STR_SQL = ""
+                            STR_SQL = STR_SQL & "INSERT INTO FEDEBOM_DASHBOARD_EXTERNAL_SYSTEMS_B2 ("
+    '                        STR_SQL = STR_SQL & "PRI_KEY"
+                            STR_SQL = STR_SQL & "SCANNED"
+                            STR_SQL = STR_SQL & ", CREDENTIAL"
+                            STR_SQL = STR_SQL & ", ENVIRONMENT"
+                            STR_SQL = STR_SQL & ", CONFIG"
+                            STR_SQL = STR_SQL & ", EXT_SYSTEM"
+                            STR_SQL = STR_SQL & ", EXT_SERVER"
+                            STR_SQL = STR_SQL & ", EXT_DB"
+                            STR_SQL = STR_SQL & ") SELECT "
+    '                        STR_SQL = STR_SQL & Chr(34) & STR_PRI_KEY & Chr(34) & ", "
+                            STR_SQL = STR_SQL & Chr(34) & STR_SCANNED & Chr(34) & ", "
+                            STR_SQL = STR_SQL & Chr(34) & STR_USER & Chr(34) & ", "
+                            STR_SQL = STR_SQL & Chr(34) & STR_ENVIRONMENT & Chr(34) & ", "
+                            STR_SQL = STR_SQL & Chr(34) & STR_CONFIG & Chr(34) & ", "
+                            STR_SQL = STR_SQL & Chr(34) & STR_EXT_SYSTEM & Chr(34) & ", "
+                            STR_SQL = STR_SQL & Chr(34) & STR_EXT_SERVER & Chr(34) & ", "
+                            STR_SQL = STR_SQL & Chr(34) & STR_EX_DB & Chr(34)
+                            CurrentDb.Execute (STR_SQL)
+                        Else
+'                            Stop
+                        End If
+'                        Debug.Print INT_EOF
+'                    Else
+'                        If Len(.Cells(INT_EOF, 2)) > 0 Then
+'                            STR_CONFIG = .Cells(INT_EOF, 2)
+'                            If Len(.Cells(INT_EOF, 3)) > 0 Then
+'                                STR_CONFIG = STR_CONFIG & "_" & .Cells(INT_EOF, 3)
+'                                If Len(.Cells(INT_EOF, 4)) > 0 Then
+'                                    STR_CONFIG = STR_CONFIG & "_" & .Cells(INT_EOF, 4)
+'                                End If
+'                            End If
+'                        End If
+'                    End If
+'                Else
+'                    STR_ENVIRONMENT = .Cells(INT_EOF, 1)
+'                    STR_CONFIG = .Cells(INT_EOF, 2)
+'                End If
+            End If
+        Next INT_EOF
+    End With
+    WB.Close
+    appExcel.Quit
+End Sub
+
+

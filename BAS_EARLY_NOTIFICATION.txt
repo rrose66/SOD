@@ -1,0 +1,280 @@
+Attribute VB_Name = "BAS_EARLY_NOTIFICATION"
+Option Compare Database
+Option Explicit
+    Public BLN_DEV As Boolean
+    Public strErrorNotificaitonEmailTo As String
+    
+    ' Used To Identify When To Send Team Password Expiration Email
+    Public Const intDaysSendNotification As Integer = 30
+    Public Const intDaysBeforeSendingNextNotification As Integer = 20
+    Public intDaysSendNotificationStandard As Integer
+
+    ' Used To Identify Every How Many Days
+    Public intNotificaitonInterval As Integer
+    Public intNotificaitonIntervalStandard As Integer
+    Public strMessageExpirationTest As String
+
+    ' Used To Identify When To Send Supervisor Password Expiration Email
+    Public intDaysSendSupervisorNotification As Integer
+    Public intDaysSendSupervisorNotificationStandard As Integer
+    Public strEmailSummaryCadence As String
+    Public strEmailMethod As String
+
+    ' Summary Email
+    Public strRecieveEmailSummary As String
+    Public strEmailSummaryRecipients As String
+    Public strSendNotificationsFor As String
+    Public strCurrentDate As String
+    Public strMailSubject As String
+Sub EARLY_WARNING_ALERT()
+    BLN_DEV = True
+    ' Identify Who Should Be Notified In Case This Program Does Not Run Successfully
+    strErrorNotificaitonEmailTo = "bomf@ford.com;psatyan1@ford.com;braokott@ford.com"
+
+    ' Used To Identify When To Send Team Password Expiration Email
+    intDaysSendNotificationStandard = intDaysSendNotification
+
+    ' Used To Identify Every How Many Days
+    intNotificaitonInterval = 2
+    intNotificaitonIntervalStandard = intNotificaitonInterval
+
+    ' Used To Identify When To Send Supervisor Password Expiration Email
+    intDaysSendSupervisorNotification = 5
+    intDaysSendSupervisorNotificationStandard = intDaysSendSupervisorNotification
+
+    'Identify What Share Point Site The Credential Management Tool Was Created Under
+'    Dim strSharePointSite As String
+'    strSharePointSite = "https://it1.spt.ford.com/sites/FEDEBOM/CMT/"
+'
+'    # Share Point List Conneciton IDs
+'    $strSharePointListName = "CredentialDetails"
+'    $strSharePointViewID = "{EB34BF90-0CC6-4958-93B5-A690EA3EEC1C}"
+'
+'    # Share Point List Dist List
+'    $strSharePointListInd = "CMT_DIST_LIST"
+'    $strSharePointIndViewID = ""
+
+    ' Summary Email
+    Dim strRecieveEmailSummary As String
+    strRecieveEmailSummary = "Yes"
+    Dim strEmailSummaryRecipients As String
+    strEmailSummaryRecipients = "dmorasa@ford.com;akalayan@ford.com;ASENGUP5@ford.com;cmirall1@ford.com;braokott@ford.com"
+    strEmailSummaryCadence = "Monthly"
+
+    ' Email Method
+    strEmailMethod = "Outlook"
+    
+    ' Send Notificaitons For All IDs Or Only Production
+    strSendNotificationsFor = "All Credentials"
+    
+    ' Override Expiration Email Hash
+    'hasOverride=@{}
+    
+    ' Share Point Web URI - WSDL Address
+    'strSharePointWSDLAddress = strSharePointSite + "/_vti_bin/lists.asmx?WSDL"
+    
+    ' Current Date DD/MM/YYYY
+    strCurrentDate = Date
+    
+    ' Process Success Flag
+    Dim booReturn As Boolean
+    booReturn = "False"
+'    ######################################################################
+'    # Function Main
+'    #
+'    # Description:
+'    # Controls Process Flow.
+'    ######################################################################
+    ' Loop Through SharePoint List Entries To Check Expiration Days And Send Notifications
+'
+'Sub LoopThroughSharePointListEntries()
+    '######################################################################
+    '# Function LoopThroughSharePointListEntries
+    '#
+    '# Description:
+    '# Updates All Entries In A Share Point List With Passed Parameters
+    '######################################################################
+    Dim DT_EXP_DATE As Date
+    Dim INT_EXP_DAYS As Integer
+    Dim RST_CREDENTIAL_DETAILS As Recordset
+    Dim RST_CMT_ATTRIBUTES As Recordset
+    Dim STR_SQL As String
+    Dim objOutlook As Outlook.Application
+    Dim objOutlookMsg As Outlook.MailItem
+    Dim objOutlookRecip As Outlook.Recipient
+    Dim STR_TO As String
+    Dim STR_PW_TO As String
+    Dim msg1 As String
+    Set objOutlook = CreateObject("Outlook.Application")
+    Set objOutlookMsg = objOutlook.CreateItem(olMailItem)
+    
+    Dim RST_INDIVIDUALS As Recordset
+    Set RST_INDIVIDUALS = CurrentDb.OpenRecordset("select CDSID from CMT_DIST_LIST where individual = " & Chr(34) & "Y" & Chr(34))
+    With RST_INDIVIDUALS
+        While Not .EOF
+            STR_TO = STR_TO & .Fields("CDSID").Value & ";"
+            .MoveNext
+        Wend
+    End With
+    Dim RST_CMT_SAME_USER_SAME_PWD As Recordset
+    STR_SQL = ""
+    STR_SQL = STR_SQL & "select "
+    STR_SQL = STR_SQL & "Credential, "
+    STR_SQL = STR_SQL & "[Application (ITMS) / Service], "
+    STR_SQL = STR_SQL & "[Password Last Changed], "
+    STR_SQL = STR_SQL & "[Password Change Frequency], "
+    STR_SQL = STR_SQL & "[Expiration Date], "
+    STR_SQL = STR_SQL & "[Expiration Days], "
+    STR_SQL = STR_SQL & "Environment, "
+    STR_SQL = STR_SQL & "[Managed By], "
+    STR_SQL = STR_SQL & "[ID Type], "
+    STR_SQL = STR_SQL & "[System], "
+    STR_SQL = STR_SQL & "[Config], "
+    STR_SQL = STR_SQL & "[Server], "
+    STR_SQL = STR_SQL & "[DataBase], "
+    STR_SQL = STR_SQL & "[Link To Process Document] "
+    STR_SQL = STR_SQL & "from CredentialDetails "
+    STR_SQL = STR_SQL & "WHERE CREDENTIAL IN"
+    STR_SQL = STR_SQL & "(SELECT CREDENTIAL FROM NOTIFICATIONS_TO_SEND) "
+    STR_SQL = STR_SQL & "and [Password Change Frequency]<>" & Chr(34) & "Never" & Chr(34)
+    STR_SQL = STR_SQL & "and [Environment]=" & Chr(34) & "Production" & Chr(34)
+    STR_SQL = STR_SQL & " order by Credential, environment,Config,System,Server,DataBase"
+    Set RST_CREDENTIAL_DETAILS = CurrentDb.OpenRecordset(STR_SQL)
+    With RST_CREDENTIAL_DETAILS
+        CurrentDb.Execute ("UpdateSharePointListExpirationDays")
+        While Not .EOF
+            With objOutlookMsg
+                strMailSubject = ""
+                strMailSubject = "Action Required - "
+                strMailSubject = strMailSubject & RST_CREDENTIAL_DETAILS.Fields("Application (ITMS) / Service").Value
+                strMailSubject = strMailSubject & " Credential " & RST_CREDENTIAL_DETAILS.Fields("Credential").Value
+                Dim RST_EXPIRATION_DATE As Recordset
+                STR_SQL = ""
+                STR_SQL = STR_SQL & "SELECT "
+                STR_SQL = STR_SQL & "[MinofExpiration Date] as Expires, "
+                STR_SQL = STR_SQL & "CountOfCredential "
+                STR_SQL = STR_SQL & "FROM CREDENTIAL_OLDEST_EXPIRATIONS_WITH_COUNT  "
+                STR_SQL = STR_SQL & "where  "
+                STR_SQL = STR_SQL & " Credential = " & Chr(34) & RST_CREDENTIAL_DETAILS.Fields("Credential").Value & Chr(34)
+                Set RST_EXPIRATION_DATE = CurrentDb.OpenRecordset(STR_SQL)
+                strMailSubject = strMailSubject & " will expire in " & CStr(DateDiff("d", Date, RST_EXPIRATION_DATE.Fields("Expires").Value)) & " Days(s)"
+                Dim STR_USER As String
+                STR_USER = RST_CREDENTIAL_DETAILS.Fields("Credential").Value
+                msg1 = ""
+                msg1 = msg1 & "<span style=" & Chr(34) & "font-family: Arial;font-size: medium" & Chr(34) & ">"
+                msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("Managed By").Value & " Managed - Credential Expiration Notification"
+                msg1 = msg1 & "</span>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<span style=" & Chr(34) & "font-family: Arial;font-size: x-small" & Chr(34) & ">"
+                msg1 = msg1 & "The " & RST_CREDENTIAL_DETAILS.Fields("Application (ITMS) / Service").Value
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<span style=" & Chr(34) & "font-family: Arial;font-size: medium" & Chr(34) & ">"
+                msg1 = msg1 & "Credential: " & RST_CREDENTIAL_DETAILS.Fields("Credential").Value
+                msg1 = msg1 & "</span>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<span style=" & Chr(34) & "font-family: Arial;font-size: medium" & Chr(34) & ">"
+                msg1 = msg1 & " will expire in " & DateDiff("d", Date, RST_EXPIRATION_DATE.Fields("Expires").Value) & " Days(s)."
+                msg1 = msg1 & "</span>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "After the credential is "
+                msg1 = msg1 & "<a href=" & Chr(34) & RST_CREDENTIAL_DETAILS.Fields("Link To Process Document").Value & Chr(34) & ">managed</a> , "
+                msg1 = msg1 & "<a href=" & Chr(34) & "https://it1.spt.ford.com/sites/FEDEBOM/CMT/CredentialManagementCatalog/CredentialDetails.aspx"
+                msg1 = msg1 & Chr(34) & ">update the credentials</a> " & Chr(34)
+                msg1 = msg1 & "Expiration Date" & Chr(34)
+                msg1 = msg1 & " field.  This will be the only notice."
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<style>"
+                msg1 = msg1 & "table, th, td {border: 1px solid black;}"
+                msg1 = msg1 & "</style>"
+                msg1 = msg1 & "<table style=" & Chr(34) & "width:100%" & Chr(34) & ">"
+                msg1 = msg1 & "<tr>"
+                msg1 = msg1 & "<th>ENV</th>"
+                msg1 = msg1 & "<th>Config</th>"
+                msg1 = msg1 & "<th>System</th>"
+                msg1 = msg1 & "<th>Server</th>"
+                msg1 = msg1 & "<th>DB</th>"
+                msg1 = msg1 & "<th>Password Last Updated</th>"
+                msg1 = msg1 & "<th>Frequency</th>"
+                msg1 = msg1 & "</tr>"
+                Dim intRow As Integer
+                For intRow = 1 To RST_EXPIRATION_DATE.Fields("CountOfCredential").Value
+                    If STR_USER = RST_CREDENTIAL_DETAILS.Fields("Credential").Value Then
+                        msg1 = msg1 & "<tr>"
+                        msg1 = msg1 & "<td>"
+                        msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("ENVIRONMENT").Value
+                        msg1 = msg1 & "</td>"
+                        msg1 = msg1 & "<td>"
+                        msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("CONFIG").Value
+                        msg1 = msg1 & "</td>"
+                        msg1 = msg1 & "<td>"
+                        msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("SYSTEM").Value
+                        msg1 = msg1 & "</td>"
+                        msg1 = msg1 & "<td>"
+                        msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("SERVER").Value
+                        msg1 = msg1 & "</td>"
+                        msg1 = msg1 & "<td>"
+                        msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("DATABASE").Value
+                        msg1 = msg1 & "</td>"
+                        msg1 = msg1 & "<td>"
+                        msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("Password Last Changed").Value
+                        msg1 = msg1 & "</td>"
+                        msg1 = msg1 & "<td>"
+                        msg1 = msg1 & RST_CREDENTIAL_DETAILS.Fields("Password Change Frequency").Value
+                        msg1 = msg1 & "</td>"
+                        msg1 = msg1 & "</tr>"
+                    End If
+                    RST_CREDENTIAL_DETAILS.MoveNext
+                Next intRow
+                msg1 = msg1 & "</table>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "<span style=" & Chr(34) & "font-family: Arial;font-size: xx-small" & Chr(34) & ">"
+                msg1 = msg1 & "Innovate & Go Further"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "Credential Management Tool"
+                msg1 = msg1 & "<br>"
+                msg1 = msg1 & "Ford Motor Company"
+                msg1 = msg1 & "</span>"
+                RST_CREDENTIAL_DETAILS.MovePrevious
+                STR_SQL = ""
+                STR_SQL = STR_SQL & "SELECT DISTINCT "
+                STR_SQL = STR_SQL & "CDSID "
+                STR_SQL = STR_SQL & "FROM CMT_DIST_LIST INNER JOIN CredentialDetails ON CMT_DIST_LIST.Team = CredentialDetails.[Managed By] "
+                STR_SQL = STR_SQL & "WHERE "
+                STR_SQL = STR_SQL & "CredentialDetails.CREDENTIAL = " & Chr(34) & RST_CREDENTIAL_DETAILS.Fields("Credential").Value & Chr(34)
+                STR_SQL = STR_SQL & " AND CMT_DIST_LIST.PASSWORD_CHANGER = " & Chr(34) & "Y" & Chr(34)
+                STR_SQL = STR_SQL & " AND CredentialDetails.Environment=" & Chr(34) & "Production" & Chr(34)
+                Set RST_CMT_ATTRIBUTES = CurrentDb.OpenRecordset(STR_SQL)
+                STR_PW_TO = ""
+                With RST_CMT_ATTRIBUTES
+                    While Not .EOF
+                        STR_PW_TO = STR_PW_TO & .Fields("CDSID").Value & ";"
+                        .MoveNext
+                    Wend
+                End With
+                RST_CMT_ATTRIBUTES.Close
+                Set RST_CMT_ATTRIBUTES = Nothing
+'                    .To = STR_TO
+                .To = STR_PW_TO
+                .Subject = "Draft Credential Management Early Notice - Test Case for your review - Please provide feedback"
+'                .Subject = strMailSubject
+                .BodyFormat = olFormatHTML
+                .HTMLBody = msg1
+                .Save
+                If BLN_DEV = False Then
+'                    .Send
+'                    STR_SQL = ""
+'                    STR_SQL = STR_SQL & "UPDATE CMT_NOTICE_LAST_SENT "
+'                    STR_SQL = STR_SQL & "SET NOTICE_LAST_SENT = #" & Date & "#"
+'                    CurrentDb.Execute (STR_SQL)
+                End If
+            End With
+            Set objOutlookMsg = Nothing
+            Set objOutlookMsg = objOutlook.CreateItem(olMailItem)
+            .MoveNext
+        Wend
+    End With
+End Sub

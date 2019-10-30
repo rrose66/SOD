@@ -1,0 +1,381 @@
+Attribute VB_Name = "BAS_SHARED"
+Option Compare Database
+Sub CleanCDSIDlookupResults()
+    Dim DBL_ROW As Double
+    Dim LNG_LAST_ROW As Long
+    Dim STR_CDSID As String
+    Dim STR_FIRST_NAME As String
+    Dim STR_LAST_NAME As String
+    Dim STR_EMP_TYPE As String
+    Dim STR_COUNTRY As String
+    Dim STR_TITLE As String
+    Dim STR_MANAGER As String
+    Dim STR_SQL As String
+    Dim appExcel As Excel.Application
+    Dim WB As Excel.Workbook
+    Dim WS As Excel.Worksheet
+    
+    Set appExcel = CreateObject("Excel.Application")
+'    Set WB = appExcel.Workbooks.Open("P:\Audit Regulatory\Security & Controls\Separation of Duties\WIP\FEDEBOM_Seperation Of Duties.xlsx")
+    Set WB = appExcel.Workbooks.Open("C:\Users\rrose66\Downloads\CDSLookup.xlsm")
+    Set WS = Excel.Worksheets("CDS List")
+'    LNG_LAST_ROW = WS.Range("A" & .Rows.Count).End(xlUp).Row
+    appExcel.Visible = True
+    CurrentDb.Execute ("DELETE FROM CDSID_LOOKUP_TOOL_CLEANED_RESULTS")
+    With WS
+        For DBL_ROW = 4 To 500000
+            If DBL_ROW = 9472 Then
+                Stop
+            End If
+            If .Cells(DBL_ROW, 1) <> "" Then
+                If Len(FCT_GET_VALID_CDSID(.Cells(DBL_ROW, 1))) > 0 Then
+                    STR_CDSID = FCT_GET_VALID_CDSID(.Cells(DBL_ROW, 1))
+                    STR_FIRST_NAME = FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP(.Cells(DBL_ROW, 2))
+                    STR_LAST_NAME = FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP(.Cells(DBL_ROW, 2))
+                    STR_EMP_TYPE = .Cells(DBL_ROW, 5)
+                    STR_COUNTRY = .Cells(DBL_ROW, 9)
+                    STR_TITLE = .Cells(DBL_ROW, 13)
+                    STR_MANAGER = .Cells(DBL_ROW, 18)
+                    STR_SQL = ""
+                    STR_SQL = STR_SQL & "INSERT INTO CDSID_LOOKUP_TOOL_CLEANED_RESULTS "
+                    STR_SQL = STR_SQL & "("
+                    STR_SQL = STR_SQL & "CDSID, "
+                    STR_SQL = STR_SQL & "FIRST_NAME, "
+                    STR_SQL = STR_SQL & "LAST_NAME, "
+                    STR_SQL = STR_SQL & "EMP_TYPE, "
+                    STR_SQL = STR_SQL & "COUNTRY, "
+                    STR_SQL = STR_SQL & "TITLE, "
+                    STR_SQL = STR_SQL & "MANAGER "
+                    STR_SQL = STR_SQL & ") SELECT "
+                    STR_SQL = STR_SQL & Chr(34) & STR_CDSID & Chr(34) & ", "
+                    STR_SQL = STR_SQL & Chr(34) & STR_FIRST_NAME & Chr(34) & ", "
+                    STR_SQL = STR_SQL & Chr(34) & STR_LAST_NAME & Chr(34) & ", "
+                    STR_SQL = STR_SQL & Chr(34) & STR_EMP_TYPE & Chr(34) & ", "
+                    STR_SQL = STR_SQL & Chr(34) & STR_COUNTRY & Chr(34) & ", "
+                    STR_SQL = STR_SQL & Chr(34) & STR_TITLE & Chr(34) & ", "
+                    STR_SQL = STR_SQL & Chr(34) & STR_MANAGER & Chr(34)
+                    CurrentDb.Execute (STR_SQL)
+                End If
+            Else
+                DBL_ROW = 500000
+            End If
+        Next DBL_ROW
+    End With
+'    WB.Save
+    WB.Close
+    appExcel.Quit
+
+End Sub
+Function FCT_GET_VALID_CDSID(ByRef strCDSID As String) As String
+    If InStr(1, strCDSID, "Not Found") = 0 Then
+        FCT_GET_VALID_CDSID = strCDSID
+    Else
+        FCT_GET_VALID_CDSID = ""
+    End If
+End Function
+
+Function FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP(ByRef strDisplayName As String) As String
+'Function FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP() As String
+'    Dim strDisplayName As String
+'    strDisplayName = "Abdel-Rahman, Abdalla (A.)"
+    Dim aryDisplayName() As String
+'    If strDisplayName = "abaykal1" Then
+'        strDisplayName = "Baykal, Arda (A.)"
+'    End If
+    If InStr(1, strDisplayName, ",") > 0 Then
+        aryDisplayName = Split(strDisplayName, ",")
+        Dim aryDisplayFirstName() As String
+        aryDisplayFirstName = Split(aryDisplayName(1), "(")
+        
+        FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP = Trim(aryDisplayFirstName(0))
+    Else
+        FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP = ""
+    End If
+End Function
+Function FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP(ByRef strDisplayName As String) As String
+    Dim aryDisplayName() As String
+    
+    If InStr(1, strDisplayName, ",") > 0 Then
+        aryDisplayName = Split(strDisplayName, ",")
+        FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP = Trim(aryDisplayName(0))
+    Else
+        FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP = ""
+    End If
+
+
+End Function
+Function IS_FILE_NAME_ACCEPTABLE(ByRef STR_FILE_NAME As String) As Boolean
+    Dim RST_AVOID_FN_LIKE As Recordset
+    Set RST_AVOID_FN_LIKE = CurrentDb.OpenRecordset("AVOID_FN_LIKE")
+    Dim BLN_TEMP As Boolean
+    BLN_TEMP = True
+    IS_FILE_NAME_ACCEPTABLE = True
+    With RST_AVOID_FN_LIKE
+        While Not .EOF
+            If InStr(1, STR_FILE_NAME, .Fields("KEY_WORD").Value) > 0 Then
+                BLN_TEMP = False
+                .MoveLast
+            End If
+            .MoveNext
+        Wend
+        .Close
+    End With
+    Set RST_AVOID_FN_LIKE = Nothing
+    IS_FILE_NAME_ACCEPTABLE = BLN_TEMP
+End Function
+Function IS_THERE_AN_ISSUE_OPENING_THE_FILE(ByRef STR_FULL_PATH As String, ByRef STR_FILE_NAME As String) As Boolean
+    On Error GoTo ERROR_HANDLER
+    IS_THERE_AN_ISSUE_OPENING_THE_FILE = False
+'    CLEAN_UP_TBL_EI
+    Dim TBL_UAL As TableDef
+    For Each TBL_UAL In CurrentDb.TableDefs
+        If TBL_UAL.Name = "UAL" Then
+            DoCmd.DeleteObject acTable, "UAL"
+        End If
+    Next TBL_UAL
+    DoCmd.TransferSpreadsheet acImport, 9, "UAL", STR_FULL_PATH, True, "User Action Log!a1:E1"
+    If Mid(STR_FILE_NAME, 1, 5) = "AVBOM" Then
+'        Stop
+        Dim RST_UAL As Recordset
+        Set RST_UAL = CurrentDb.OpenRecordset("UAL")
+        Dim DB_WIZARD_VERSIONS_BY_FILE_NAME As Database
+        Dim RST_DOES_FILE_NAME_ALREADY_EXIST_IN_WIZARD_VERSIONS_BY_FILE_NAME As Recordset
+        Set DB_WIZARD_VERSIONS_BY_FILE_NAME = OpenDatabase(STR_TEMP_DATA_FOLDER & "WIZARD_VERSIONS_BY_FILE_NAME.accdb", 0)
+        Set RST_DOES_FILE_NAME_ALREADY_EXIST_IN_WIZARD_VERSIONS_BY_FILE_NAME = DB_WIZARD_VERSIONS_BY_FILE_NAME.OpenRecordset("SELECT COUNT(*) FROM WIZARD_VERSIONS_BY_FILE_NAME WHERE FILE_NAME = " & Chr(34) & STR_FILE_NAME & Chr(34))
+        If RST_DOES_FILE_NAME_ALREADY_EXIST_IN_WIZARD_VERSIONS_BY_FILE_NAME.Fields(0).Value = 0 Then
+            DB_WIZARD_VERSIONS_BY_FILE_NAME.Execute ("INSERT INTO WIZARD_VERSIONS_BY_FILE_NAME(FILE_NAME, WIZARD_VERSION) SELECT " & Chr(34) & STR_FILE_NAME & Chr(34) & ", " & Chr(34) & Replace(RST_UAL.Fields(0).Name, "#", ".") & Chr(34))
+        End If
+        RST_DOES_FILE_NAME_ALREADY_EXIST_IN_WIZARD_VERSIONS_BY_FILE_NAME.Close
+        Set RST_DOES_FILE_NAME_ALREADY_EXIST_IN_WIZARD_VERSIONS_BY_FILE_NAME = Nothing
+        RST_UAL.Close
+        Set RST_UAL = Nothing
+        DB_WIZARD_VERSIONS_BY_FILE_NAME.Close
+        Set DB_WIZARD_VERSIONS_BY_FILE_NAME = Nothing
+    End If
+    For Each TBL_UAL In CurrentDb.TableDefs
+        If TBL_UAL.Name = "UAL" Then
+            DoCmd.DeleteObject acTable, "UAL"
+        End If
+    Next TBL_UAL
+ERROR_HANDLER:
+    If Err.Number = 0 Then
+    Else
+        
+        IS_THERE_AN_ISSUE_OPENING_THE_FILE = True
+'        CurrentDb.Execute ("insert into corupt_files(file_name) select " & Chr(34) & STR_FILE_NAME & Chr(34))
+    End If
+End Function
+Function WHERE_IS_THE_FILE(ByRef STR_FILE_NAME As String) As String
+    On Error GoTo ERROR_HANDLER
+    Dim INT_FIND_DRIVE As Integer
+    Dim bS, B, b1, BC
+    Dim objNetwork
+    Set bS = CreateObject("Scripting.FileSystemObject")
+    Dim STR_FILE_PATH As String
+    For INT_FIND_DRIVE = 1 To 10
+        If INT_FIND_DRIVE = 1 Then
+            STR_FILE_PATH = "I:\WizDevErrLogs\"
+            Set objNetwork = CreateObject("WScript.Network")
+'            objNetwork.MapNetworkDrive "I:", "https://dept.sp.ford.com/sites/avbomus/Shared Documents/FNA Wizard/Production Support Issues/WizDevErrLogs"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 2 Then
+            STR_FILE_PATH = "J:\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 3 Then
+'            STR_FILE_PATH = "H:\"
+'            Set B = bS.GetFolder(STR_FILE_PATH)
+'            Set BC = B.Files
+'            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+'                WHERE_IS_THE_FILE = STR_FILE_PATH
+'                Exit For
+'            End If
+        ElseIf INT_FIND_DRIVE = 4 Then
+'            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\WizDevErrorLogs"
+'            Set B = bS.GetFolder(STR_FILE_PATH)
+'            Set BC = B.Files
+'            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+'                WHERE_IS_THE_FILE = STR_FILE_PATH
+'                Exit For
+'            End If
+        ElseIf INT_FIND_DRIVE = 5 Then
+            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\WizDevErrorLogs\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 11 Then
+            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\AVBOM2 Import Files\archive 2012\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 12 Then
+            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\AVBOM2 Import Files\archive 2013\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 6 Then
+            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\AVBOM2 Import Files\archive 2014\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 7 Then
+            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\AVBOM2 Import Files\archive 2015\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 8 Then
+            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\AVBOM2 Import Files\archive 2016\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 9 Then
+            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\AVBOM2 Import Files\archive 2017\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        ElseIf INT_FIND_DRIVE = 10 Then
+            STR_FILE_PATH = "G:\XML Logs\Failed Pulls\"
+            Set B = bS.GetFolder(STR_FILE_PATH)
+            Set BC = B.Files
+            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+                WHERE_IS_THE_FILE = STR_FILE_PATH
+                Exit For
+            End If
+        End If
+    Next INT_FIND_DRIVE
+
+'    For INT_FIND_DRIVE = 1 To 4
+'        If INT_FIND_DRIVE = 1 Then
+'            STR_FILE_PATH = "I:\"
+'            Set B = bS.GetFolder(STR_FILE_PATH)
+'            Set BC = B.Files
+'            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+'                WHERE_IS_THE_FILE = STR_FILE_PATH
+'                Exit For
+'            End If
+'        ElseIf INT_FIND_DRIVE = 2 Then
+'            STR_FILE_PATH = "J:\"
+'            Set B = bS.GetFolder(STR_FILE_PATH)
+'            Set BC = B.Files
+'            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+'                WHERE_IS_THE_FILE = STR_FILE_PATH
+'                Exit For
+'            End If
+'        ElseIf INT_FIND_DRIVE = 3 Then
+'            STR_FILE_PATH = "N:\C3PING_DEPLOY\AVBOM2\WizDevErrorLogs\"
+'            Set B = bS.GetFolder(STR_FILE_PATH)
+'            Set BC = B.Files
+'            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+'                WHERE_IS_THE_FILE = STR_FILE_PATH
+'                Exit For
+'            End If
+'        ElseIf INT_FIND_DRIVE = 4 Then
+'            STR_FILE_PATH = "H:\"
+'            Set B = bS.GetFolder(STR_FILE_PATH)
+'            Set BC = B.Files
+'            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+'                WHERE_IS_THE_FILE = STR_FILE_PATH
+'                Exit For
+'            End If
+'        ElseIf INT_FIND_DRIVE = 5 Then
+'            STR_FILE_PATH = "G:\"
+'            Set B = bS.GetFolder(STR_FILE_PATH)
+'            Set BC = B.Files
+'            If bS.FileExists(STR_FILE_PATH & STR_FILE_NAME) Then
+'                WHERE_IS_THE_FILE = STR_FILE_PATH
+'                Exit For
+'            End If
+'        End If
+'    Next INT_FIND_DRIVE
+ERROR_HANDLER:
+If Err.Number = -2147024811 Then  'The local device name is already in use.
+    Resume Next
+End If
+
+End Function
+Function DO_ALL_NEEDED_FIELDS_EXIST(ByRef END_ITEMS_TABLE_DEF As TableDef) As Boolean
+    Dim INT_FIELD_COUNTER As Integer
+    Dim BLN_BOM_ACTION_EXISTS As Boolean
+    Dim BLN_F1 As Boolean
+    Dim BLN_WORK_WITH_COMPONENTS As Boolean
+    Dim BLN_MASTER_ROW As Boolean
+    Dim BLN_CDSID As Boolean
+    Dim BLN_PROGRAM As Boolean
+    BLN_BOM_ACTION_EXISTS = False
+    BLN_MASTER_ROW = False
+    BLN_WORK_WITH_COMPONENTS = False
+    BLN_CDSID = False
+    BLN_PROGRAM = False
+    With END_ITEMS_TABLE_DEF
+        For INT_FIELD_COUNTER = 0 To END_ITEMS_TABLE_DEF.Fields.Count - 1
+          
+            If .Fields(INT_FIELD_COUNTER).Name = "PROGRAM*" Then
+                BLN_PROGRAM = True
+            End If
+            If .Fields(INT_FIELD_COUNTER).Name = "F1" Then
+                BLN_F1 = True
+                DO_ALL_NEEDED_FIELDS_EXIST = False
+                Exit Function
+            End If
+            If .Fields(INT_FIELD_COUNTER).Name = "5# Work With Components" Then
+                DO_ALL_NEEDED_FIELDS_EXIST = False
+                Exit Function
+            End If
+            If .Fields(INT_FIELD_COUNTER).Name = "MASTER ROW" Then
+                BLN_MASTER_ROW = True
+            End If
+            If .Fields(INT_FIELD_COUNTER).Name = "BOM ACTION" Then
+                BLN_BOM_ACTION_EXISTS = True
+            End If
+            If .Fields(INT_FIELD_COUNTER).Name = "D&R CDSID*" Then
+                BLN_CDSID = True
+            End If
+        Next INT_FIELD_COUNTER
+    End With
+    If BLN_PROGRAM = True And BLN_MASTER_ROW = True And BLN_BOM_ACTION_EXISTS = True And BLN_CDSID = True Then
+        DO_ALL_NEEDED_FIELDS_EXIST = False
+    Else
+        DO_ALL_NEEDED_FIELDS_EXIST = True
+    End If
+End Function
+Sub LIST_DBS_AND_LINKED_TABLES()
+    Dim MY_TABLE As TableDef
+    Dim INT_TABLE As Integer
+    
+    For INT_TABLE = 0 To CurrentDb.TableDefs.Count
+        Debug.Print CurrentDb.TableDefs(INT_TABLE).SourceTableName
+        
+    Next INT_TABLE
+    
+End Sub
+

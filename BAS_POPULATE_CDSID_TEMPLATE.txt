@@ -1,0 +1,51 @@
+Attribute VB_Name = "BAS_POPULATE_CDSID_TEMPLATE"
+Option Compare Database
+
+Sub PopulateCDSIDlookup()
+    Dim aryInput() As String
+    Dim aryCDSID() As String
+    Dim dblRow As Double
+    
+    Dim appExcel As Excel.Application
+    Dim wbUniques As Excel.Workbook
+    Dim wsCDSID As Excel.Worksheet
+    
+    Dim strLastCDSID As String
+    
+    Set appExcel = CreateObject("Excel.Application")
+    
+    dblRow = 4
+    Dim dblLookupRow As Double
+    Set WB = appExcel.Workbooks.Open("C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\WIP\CDSLookup_" & Format(Now(), "YYYYMMDD") & ".xlsm")
+    Set WS = WB.Sheets(1)
+    appExcel.Visible = True
+    appExcel.ReferenceStyle = xlR1C1
+    appExcel.WindowState = xlMaximized
+    Open "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\SOURCE_OF_TRUTH_DATA\CONSOLIDATED_CDSIDS_SORTED.TXT" For Input As #1
+    Do Until EOF(1)
+        Line Input #1, SLINE
+        If SLINE = strLastCDSID Then
+'            Stop
+        Else
+            WS.Cells(dblRow, 1) = SLINE
+            dblRow = dblRow + 1
+        End If
+        strLastCDSID = SLINE
+    Loop
+    Close #1
+    WB.Save
+    Stop
+    MsgBox ("CDSID Lookup Tool now has all CDSID's loaded and is ready to have the Get CDS Data clicked")
+'    wbNotFound.Save
+'    wbCleaned.Save
+'    wbUniques.Save
+'    WB.Close
+'    wbNotFound.Close
+'    wbCleaned.Close
+'    wbUniques.Close
+'    appExcel.Quit
+End Sub
+Function AutoRun() As Boolean
+    PopulateCDSIDlookup
+End Function
+

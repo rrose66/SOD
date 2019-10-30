@@ -1,0 +1,117 @@
+Attribute VB_Name = "BAS_CLEAN_CDSID_LOOKUP_TOOL_RESULTS"
+Option Compare Database
+Option Explicit
+Function AutoRun() As Boolean
+    CleanCDSIDlookupResults
+End Function
+Sub CleanCDSIDlookupResults()
+    Dim DBL_ROW As Double
+    Dim DBL_LAST_ROW As Double
+    Dim LNG_LAST_ROW As Long
+    Dim STR_CDSID As String
+    Dim STR_FIRST_NAME As String
+    Dim STR_LAST_NAME As String
+    Dim STR_EMP_TYPE As String
+    Dim STR_COUNTRY As String
+    Dim STR_TITLE As String
+    Dim STR_MANAGER As String
+    Dim STR_SQL As String
+    Dim appExcel As Excel.Application
+    Dim WB As Excel.Workbook
+    Dim WS As Excel.Worksheet
+    Stop
+    Kill "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\WIP\CLEANED_CDSID_LOOKUP_TOOL.xlsx"
+    
+    Set appExcel = CreateObject("Excel.Application")
+    appExcel.Visible = True
+    Set WB = appExcel.Workbooks.Open("C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\WIP\CDSLookup_" & Format(Now(), "yyyymmdd") & ".xlsm")
+    Set WS = WB.Worksheets("CDS List")
+'    appExcel.Visible = True
+    DBL_LAST_ROW = WS.UsedRange.Rows.Count
+
+    appExcel.Workbooks.Add
+    Dim wbCleaned As Excel.Workbook
+    Set wbCleaned = ActiveWorkbook
+    wbCleaned.SaveAs ("C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\WIP\CLEANED_CDSID_LOOKUP_TOOL")
+'    ActiveWorkbook.SaveAs "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\WIP\CLEANED_CDSID_LOOKUP_TOOL.xlsx"
+'    Dim wbCleaned As Excel.Workbook
+'    Set wbCleaned = ActiveWorkbook
+    Dim wsCleaned As Excel.Worksheet
+    Dim strCmd As String
+    Set wsCleaned = ActiveSheet
+    With wsCleaned
+        .Cells(1, 1) = "CDSID"
+        .Cells(1, 2) = "FIRST_NAME"
+        .Cells(1, 3) = "LAST_NAME"
+        .Cells(1, 4) = "EMP_TYPE"
+        .Cells(1, 5) = "COUNTRY"
+        .Cells(1, 6) = "TITLE"
+        .Cells(1, 7) = "MANAGER"
+'        .Cells(1, 8) = "TEAM_ROLE"
+'        .Cells(1, 9) = "SOD_ROLE"
+    End With
+'    CurrentDb.Execute ("DELETE FROM CDSID_LOOKUP_TOOL_CLEANED_RESULTS")
+'    Stop
+    Open "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\SOURCE_OF_TRUTH_DATA\RemoveTheseCDSIDs.txt" For Output As #1
+    Dim DBL_CLEANED_ROW As Double
+    DBL_CLEANED_ROW = 2
+    With WS
+        For DBL_ROW = 4 To DBL_LAST_ROW
+            If .Cells(DBL_ROW, 5) > "" Then
+                wsCleaned.Cells(DBL_CLEANED_ROW, 1) = FCT_GET_VALID_CDSID(WS.Cells(DBL_ROW, 1))
+                wsCleaned.Cells(DBL_CLEANED_ROW, 2) = FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP(.Cells(DBL_ROW, 2))
+                wsCleaned.Cells(DBL_CLEANED_ROW, 3) = FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP(.Cells(DBL_ROW, 2))
+                wsCleaned.Cells(DBL_CLEANED_ROW, 4) = .Cells(DBL_ROW, 5)
+                wsCleaned.Cells(DBL_CLEANED_ROW, 5) = .Cells(DBL_ROW, 9)
+                wsCleaned.Cells(DBL_CLEANED_ROW, 6) = .Cells(DBL_ROW, 13)
+                wsCleaned.Cells(DBL_CLEANED_ROW, 7) = .Cells(DBL_ROW, 18)
+                DBL_CLEANED_ROW = DBL_CLEANED_ROW + 1
+            Else
+'                Stop
+                STR_CDSID = FCT_GET_VALID_CDSID(WS.Cells(DBL_ROW, 1))
+                STR_CDSID = WS.Cells(DBL_ROW, 1)
+                Print #1, STR_CDSID
+            End If
+        Next DBL_ROW
+    End With
+    Close #1
+    wbCleaned.Save
+    Stop
+    MsgBox ("the CDSID Lookup Tool Results have been cleaned")
+    wbCleaned.Close
+    WB.Close
+    appExcel.Quit
+
+End Sub
+
+Function FCT_GET_VALID_CDSID(ByRef strCDSID As String) As String
+    If InStr(1, strCDSID, "Not Found") = 0 Then
+        FCT_GET_VALID_CDSID = strCDSID
+    Else
+        Dim aryBadCDSID() As String
+        aryBadCDSID = Split(strCDSID, " ")
+        FCT_GET_VALID_CDSID = aryBadCDSID(0)
+    End If
+End Function
+
+Function FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP(ByRef strDisplayName As String) As String
+    Dim aryDisplayName() As String
+    If InStr(1, strDisplayName, ",") > 0 Then
+        aryDisplayName = Split(strDisplayName, ",")
+        Dim aryDisplayFirstName() As String
+        aryDisplayFirstName = Split(aryDisplayName(1), "(")
+        FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP = Trim(aryDisplayFirstName(0))
+    Else
+        FCT_GET_FIRST_NAME_FROM_CDSID_LOOKUP = ""
+    End If
+End Function
+Function FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP(ByRef strDisplayName As String) As String
+    Dim aryDisplayName() As String
+    If InStr(1, strDisplayName, ",") > 0 Then
+        aryDisplayName = Split(strDisplayName, ",")
+        FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP = Trim(aryDisplayName(0))
+    Else
+        FCT_GET_LAST_NAME_FROM_CDSID_LOOKUP = ""
+    End If
+End Function
+

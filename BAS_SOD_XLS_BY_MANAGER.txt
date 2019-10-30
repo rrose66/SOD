@@ -1,0 +1,139 @@
+Attribute VB_Name = "BAS_SOD_XLS_BY_MANAGER"
+Option Compare Database
+
+Sub AskManagersToApprove()
+    Dim STR_MANAGER As String
+    Dim APP_XLSX As Excel.Application
+    Dim WB As Excel.Workbook
+    Dim WS As Excel.Worksheet
+    Dim RST_CDSID_PRG_ROLE_TYPE_DATA_FOR_ANALYSIS As Recordset
+    Dim INT_ROW As Double
+    Dim STR_CMD As String
+    Dim objOutlook As Outlook.Application
+    Dim objOutlookMsg As Outlook.MailItem
+    Dim objOutlookRecip As Outlook.Recipient
+    Dim STR_TO As String
+    Dim STR_PW_TO As String
+    Dim msg1 As String
+    Set objOutlook = CreateObject("Outlook.Application")
+    Set objOutlookMsg = objOutlook.CreateItem(olMailItem)
+    
+    Set APP_XLSX = CreateObject("Excel.Application")
+    'Set RST_CDSID_PRG_ROLE_TYPE_DATA_FOR_ANALYSIS = CurrentDb.OpenRecordset("SELECT * FROM CDSID_PRG_ROLE_TYPE_DATA_FOR_ANALYSIS WHERE MANAGER IS NOT NULL order by MANAGER")
+    STR_CMD = ""
+    STR_CMD = STR_CMD & "SELECT * "
+    STR_CMD = STR_CMD & "FROM CDSID_PRG_ROLE_TYPE_DATA_FOR_ANALYSIS"
+    STR_CMD = STR_CMD & " WHERE MANAGER IS NOT NULL"
+    STR_CMD = STR_CMD & " order by MANAGER"
+    Set RST_CDSID_PRG_ROLE_TYPE_DATA_FOR_ANALYSIS = CurrentDb.OpenRecordset(STR_CMD)
+    With RST_CDSID_PRG_ROLE_TYPE_DATA_FOR_ANALYSIS
+        Set WB = APP_XLSX.Workbooks.Add
+        Set WS = WB.Sheets(1)
+        APP_XLSX.Visible = True
+        STR_MANAGER = .Fields("MANAGER").Value
+        WS.Cells(1, 1) = .Fields(0).Name
+        WS.Cells(1, 2) = .Fields(1).Name
+        WS.Cells(1, 3) = .Fields(2).Name
+        WS.Cells(1, 4) = .Fields(3).Name
+        WS.Cells(1, 5) = .Fields(4).Name
+        WS.Cells(1, 6) = .Fields(5).Name
+        WS.Cells(1, 7) = .Fields(6).Name
+        WS.Cells(1, 8) = .Fields(7).Name
+        WS.Cells(1, 9) = .Fields(8).Name
+        WS.Cells(1, 10) = .Fields(9).Name
+        WS.Cells(1, 11) = .Fields(10).Name
+        WS.Cells(1, 12) = .Fields(11).Name
+        WS.Cells(1, 13) = .Fields(12).Name
+        WS.Cells(1, 14) = .Fields(13).Name
+        WS.Cells(1, 15) = .Fields(14).Name
+        WS.Cells(1, 16) = .Fields(15).Name
+        WS.Cells(1, 17) = .Fields(16).Name
+        WS.Cells(1, 18) = .Fields(17).Name
+        WS.Cells(1, 19) = .Fields(18).Name
+        WS.Cells(1, 20) = .Fields(19).Name
+        WS.Cells(1, 21) = .Fields(20).Name
+        WS.Cells(1, 22) = .Fields(21).Name
+        WS.Cells(1, 23) = .Fields(22).Name
+        WS.Cells(1, 24) = .Fields(23).Name
+        WS.Cells(1, 25) = .Fields(24).Name
+        WS.Cells(1, 26) = "SCANNED"
+        WS.Cells(1, 27) = .Fields(26).Name
+'        WS.Cells(1, 28) = .Fields(27).Name
+'        WS.Cells(1, 29) = .Fields(28).Name
+'        WS.Cells(1, 30) = .Fields(29).Name
+        INT_ROW = 2
+        While Not .EOF
+            With objOutlookMsg
+                WS.Cells(INT_ROW, 1) = .Fields(0).Value
+                WS.Cells(INT_ROW, 2) = .Fields(1).Value
+                WS.Cells(INT_ROW, 3) = .Fields(2).Value
+                WS.Cells(INT_ROW, 4) = .Fields(3).Value
+                WS.Cells(INT_ROW, 5) = .Fields(4).Value
+                WS.Cells(INT_ROW, 6) = .Fields(5).Value
+                WS.Cells(INT_ROW, 7) = .Fields(6).Value
+                WS.Cells(INT_ROW, 8) = .Fields(7).Value
+                WS.Cells(INT_ROW, 9) = .Fields(8).Value
+                WS.Cells(INT_ROW, 10) = .Fields(9).Value
+                WS.Cells(INT_ROW, 11) = .Fields(10).Value
+                WS.Cells(INT_ROW, 12) = .Fields(11).Value
+                WS.Cells(INT_ROW, 13) = .Fields(12).Value
+                WS.Cells(INT_ROW, 14) = .Fields(13).Value
+                WS.Cells(INT_ROW, 15) = .Fields(14).Value
+                WS.Cells(INT_ROW, 16) = .Fields(15).Value
+                WS.Cells(INT_ROW, 17) = .Fields(16).Value
+                WS.Cells(INT_ROW, 18) = .Fields(17).Value
+                WS.Cells(INT_ROW, 19) = .Fields(18).Value
+                WS.Cells(INT_ROW, 20) = .Fields(19).Value
+                WS.Cells(INT_ROW, 21) = .Fields(20).Value
+                WS.Cells(INT_ROW, 22) = .Fields(21).Value
+                WS.Cells(INT_ROW, 23) = .Fields(22).Value
+                WS.Cells(INT_ROW, 24) = .Fields(23).Value
+                WS.Cells(INT_ROW, 25) = .Fields(24).Value
+    '            WS.Cells(INT_ROW, 26) = .Fields(25).Value
+                WS.Cells(INT_ROW, 27) = .Fields(26).Value
+                Set objOutlookMsg = Nothing
+                Set objOutlookMsg = objOutlook.CreateItem(olMailItem)
+            End With
+            .MoveNext
+            If STR_MANAGER <> .Fields("MANAGER").Value Then
+                Debug.Print STR_MANAGER
+                Stop
+                WB.SaveAs "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\FOR_MANAGERS\" & STR_MANAGER & ".XLSX"
+                WB.Close
+                Set WB = APP_XLSX.Workbooks.Add
+                Set WS = WB.Sheets(1)
+                APP_XLSX.Visible = True
+                WS.Cells(1, 1) = .Fields(0).Name
+                WS.Cells(1, 2) = .Fields(1).Name
+                WS.Cells(1, 3) = .Fields(2).Name
+                WS.Cells(1, 4) = .Fields(3).Name
+                WS.Cells(1, 5) = .Fields(4).Name
+                WS.Cells(1, 6) = .Fields(5).Name
+                WS.Cells(1, 7) = .Fields(6).Name
+                WS.Cells(1, 8) = .Fields(7).Name
+                WS.Cells(1, 9) = .Fields(8).Name
+                WS.Cells(1, 10) = .Fields(9).Name
+                WS.Cells(1, 11) = .Fields(10).Name
+                WS.Cells(1, 12) = .Fields(11).Name
+                WS.Cells(1, 13) = .Fields(12).Name
+                WS.Cells(1, 14) = .Fields(13).Name
+                WS.Cells(1, 15) = .Fields(14).Name
+                WS.Cells(1, 16) = .Fields(15).Name
+                WS.Cells(1, 17) = .Fields(16).Name
+                WS.Cells(1, 18) = .Fields(17).Name
+                WS.Cells(1, 19) = .Fields(18).Name
+                WS.Cells(1, 20) = .Fields(19).Name
+                WS.Cells(1, 21) = .Fields(20).Name
+                WS.Cells(1, 22) = .Fields(21).Name
+                WS.Cells(1, 23) = .Fields(22).Name
+                WS.Cells(1, 24) = .Fields(23).Name
+                WS.Cells(1, 25) = .Fields(24).Name
+                WS.Cells(1, 26) = "SCANNED"
+                WS.Cells(1, 27) = .Fields(26).Name
+                INT_ROW = 1
+            End If
+            STR_MANAGER = .Fields("MANAGER").Value
+            INT_ROW = INT_ROW + 1
+        Wend
+    End With
+End Sub

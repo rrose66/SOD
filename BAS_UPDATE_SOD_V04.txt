@@ -1,0 +1,1369 @@
+Attribute VB_Name = "BAS_UPDATE_SOD"
+Option Compare Database
+Option Explicit
+
+Public Const strFullPathForTemplateSOD As String = "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\SOD\FEDEBOM_Separation_Of_Duties_Template.xlsx"
+Public Const strFullPathForTargetSOD As String = "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\SOD\FEDEBOM_Separation_Of_Duties_V10.xlsx"
+Sub UpdateSODuniqueCDSIDconstraint()
+    Stop
+'    Dim BLN_DEV_PROMOTER_CONFLICT As Boolean
+'    Dim BLN_DEV_DBA_CONFLICT As Boolean
+'    Dim BLN_DEV_SETUP_CONFLICT As Boolean
+'    Dim BLN_DEV_SCHEDULER_CONFLICT As Boolean
+'    Dim BLN_DEV_OWNER_CONFLICT As Boolean
+'    Dim BLN_DEV_USER_CONFLICT As Boolean
+    
+    Dim BLN_PROMOTER_DEV_CONFLICT As Boolean
+    Dim BLN_PROMOTER_QA_CONFLICT As Boolean
+    Dim BLN_PROMOTER_SETUP_CONFLICT As Boolean
+    Dim BLN_PROMOTER_SCHEDULER_CONFLICT As Boolean
+    Dim BLN_PROMOTER_OWNER_CONFLICT As Boolean
+    Dim BLN_PROMOTER_USER_CONFLICT As Boolean
+    
+    Dim BLN_QA_PROMOTER_CONFLICT As Boolean
+    Dim BLN_QA_OWNER_CONFLICT As Boolean
+    Dim BLN_QA_USER_CONFLICT As Boolean
+    
+    Dim BLN_DBA_DEV_CONFLICT As Boolean
+    Dim BLN_DBA_OWNER_CONFLICT As Boolean
+    Dim BLN_DBA_USER_CONFLICT As Boolean
+    
+    Dim BLN_SETUP_DEV_CONFLICT As Boolean
+    Dim BLN_SETUP_PROMOTER_CONFLICT As Boolean
+    Dim BLN_SETUP_SCHEDULER_CONFLICT As Boolean
+    Dim BLN_SETUP_OWNER_CONFLICT As Boolean
+    Dim BLN_SETUP_USER_CONFLICT As Boolean
+    
+    Dim BLN_SCHEDULER_DEV_CONFLICT As Boolean
+    Dim BLN_SCHEDULER_PROMOTER_CONFLICT As Boolean
+    Dim BLN_SCHEDULER_SETUP_CONFLICT As Boolean
+    
+    Dim BLN_OWNER_DEV_CONFLICT As Boolean
+    Dim BLN_OWNER_QA_CONFLICT As Boolean
+    Dim BLN_OWNER_DBA_CONFLICT As Boolean
+    
+    
+    Dim BLN_ACCUREV_END_USER As Boolean
+    Dim BLN_ACCUREV_PROMOTER_CONFLICT As Boolean
+    Dim BLN_CONFLICT_EXISTS As Boolean
+    Dim BLN_FEDE_USER_SETUP_CONFLICT As Boolean
+    Dim BLN_OWNER_ACCUREV As Boolean
+    Dim BLN_PROD_CONFLICT As Boolean
+    Dim BLN_QA_CONFLICT As Boolean
+    
+    Dim DBL_EOF As Double
+    Dim DBL_ROW As Double
+    
+    Dim appExcel As Excel.Application
+    Dim WB As Excel.Workbook
+    Dim WS As Excel.Worksheet
+    Dim wsFinalReport As Excel.Worksheet
+    Dim wsProductionCDSID As Excel.Worksheet
+    
+    Dim INT_COUNT_OF_ROLES As Integer
+    
+    Dim RST_ORACLE_CDSID As Recordset
+    Dim RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID As Recordset
+    
+    Dim STR_SQL As String
+    Dim STR_CMD As String
+    
+    Dim STR_ACCUREV As String
+    Dim STR_ACCUREV_CODE_PROMOTER_CDSID As String
+    Dim STR_CDSID As String
+    Dim STR_DEV As String
+    Dim STR_D4_S2_CDSID As String
+    Dim STR_I6S2_CDSID As String
+    Dim STR_REGISTERED_CDSID As String
+    Dim STR_ROLE As String
+    Dim STR_SOD_ROLE As String
+    Dim STR_SCHEDULER As String
+    Dim STR_SCHEDULER_CDSID As String
+    Dim STR_SETUP_CDSID As String
+    Dim STR_OWNER_ACCUREV As String
+    
+    Dim STR_ACCUREV_PERMISSION As String
+    Dim STR_CODE_PROMOTE As String
+    Dim STR_DBA_PERMISSION As String
+    Dim STR_DEV_PERMISSION As String
+    Dim STR_OWNER_PERMISSIONS As String
+    Dim STR_PROD_PERMISSIONS As String
+    Dim STR_QA_PERMISSIONS As String
+    Dim STR_SCHEDULER_PERMISSIONS As String
+    Dim STR_SETUP_PERMISSION As String
+    
+    Dim STR_PROMOTER_CONFLICT As String
+    Dim STR_END_USER_CONFLICT As String
+    
+    BLN_CONFLICT_EXISTS = False
+    
+    
+    Dim DBL_WORK_ROW As Double
+    Dim DBL_KEEP_ROW As Double
+    Dim BLN_MOVE As Boolean
+    Dim STR_CONFLICT_DEV As String
+    Dim STR_CONFLICT_QA As String
+    Dim STR_CONFLICT_PROMOTER As String
+    Dim STR_CONFLICT_USER As String
+    
+    
+    
+    Set appExcel = CreateObject("Excel.Application")
+    
+    Kill (strFullPathForTargetSOD)
+    appExcel.Visible = True
+    Set WB = appExcel.Workbooks.Open(strFullPathForTemplateSOD)
+'    Set wsProductionCDSID = WB.Worksheets("CDSIDs in Production")
+    WB.SaveAs (strFullPathForTargetSOD)
+    WB.Close
+    Set WB = appExcel.Workbooks.Open(strFullPathForTargetSOD)
+    Set wsFinalReport = WB.Worksheets("FEDEB Separation of Duties Cntl")
+    Set WS = WB.Worksheets("SOD_WORK")
+    WS.Visible = xlSheetVisible
+    WS.Activate
+    appExcel.ReferenceStyle = xlR1C1
+    appExcel.WindowState = xlMaximized
+    DBL_EOF = 19
+    Set RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID = CurrentDb.OpenRecordset("SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID")
+
+'    Stop
+'    CurrentDb.Execute ("NEW_CLEANED_CDSID")
+    
+    BLN_PROD_CONFLICT = False
+    BLN_QA_CONFLICT = False
+    BLN_ACCUREV_PROMOTER_CONFLICT = False
+    BLN_FEDE_USER_SETUP_CONFLICT = False
+    
+    With RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID
+        While Not .EOF
+        'setup memory variables to deal with nulls
+            If IsNull(STR_ACCUREV_CODE_PROMOTER_CDSID = .Fields("ACCUREV_CODE_PROMOTER_CDSID").Value) Then
+                STR_ACCUREV_CODE_PROMOTER_CDSID = ""
+            Else
+                STR_ACCUREV_CODE_PROMOTER_CDSID = .Fields("ACCUREV_CODE_PROMOTER_CDSID").Value
+            End If
+            If IsNull(STR_ACCUREV_CODE_PROMOTER_CDSID = .Fields("D4_S2_CDSID").Value) Then
+                STR_D4_S2_CDSID = ""
+            Else
+                STR_D4_S2_CDSID = .Fields("D4_S2_CDSID").Value
+            End If
+            If IsNull(STR_ACCUREV_CODE_PROMOTER_CDSID = .Fields("I6_S2_CDSID").Value) Then
+                STR_I6S2_CDSID = ""
+            Else
+                STR_I6S2_CDSID = .Fields("I6_S2_CDSID").Value
+            End If
+            If IsNull(STR_ACCUREV_CODE_PROMOTER_CDSID = .Fields("PROD_CDSID").Value) Then
+                STR_REGISTERED_CDSID = ""
+            Else
+                STR_REGISTERED_CDSID = .Fields("PROD_CDSID").Value
+            End If
+            If IsNull(STR_ACCUREV_CODE_PROMOTER_CDSID = .Fields("SCHEDULER_CDSID").Value) Then
+                STR_SCHEDULER_CDSID = ""
+            Else
+                STR_SCHEDULER_CDSID = .Fields("SCHEDULER_CDSID").Value
+            End If
+            If IsNull(STR_ACCUREV_CODE_PROMOTER_CDSID = .Fields("SETUP_CDSID").Value) Then
+                STR_SETUP_CDSID = ""
+            Else
+                STR_SETUP_CDSID = .Fields("SETUP_CDSID").Value
+            End If
+            
+            STR_CDSID = .Fields("CDSID").Value
+            If STR_CDSID = "" Then
+            Stop
+            End If
+            STR_SOD_ROLE = .Fields("SOD_ROLE").Value
+            If STR_SOD_ROLE = "Data Owner" Then
+                BLN_OWNER_QA_CONFLICT = GET_FCT_THE_OWNER_CAN_PROMOTE_CODE(STR_CDSID)
+                BLN_CONFLICT_EXISTS = True
+                STR_PROMOTER_CONFLICT = "*"
+            End If
+            
+            'Get permission levels
+'            STR_PROD_PERMISSIONS = GET_FCT_ACCESS_LEVEL(INT_COUNT_OF_ROLES, STR_CDSID, STR_SOD_ROLE, "PROD", STR_REGISTERED_CDSID)
+            STR_PROD_PERMISSIONS = GET_PROD_ACCESS_LEVEL(STR_CDSID)
+            STR_ACCUREV_PERMISSION = GET_ACCUREV_PERMISSIONS(STR_CDSID)
+            If STR_ACCUREV_PERMISSION = "Yes" Then
+                STR_CODE_PROMOTE = "Yes"
+                BLN_ACCUREV_END_USER = GET_FCT_ACCUREV_END_USER(STR_CDSID)
+            End If
+            STR_QA_PERMISSIONS = GET_FCT_QA_PERMISSION_LEVEL(STR_CDSID)
+'            STR_QA_PERMISSIONS = GET_FCT_ACCESS_LEVEL(INT_COUNT_OF_ROLES, STR_CDSID, STR_SOD_ROLE, "QA", STR_REGISTERED_CDSID)
+            STR_SETUP_PERMISSION = GET_FCT_ACCESS_LEVEL(INT_COUNT_OF_ROLES, STR_CDSID, STR_SOD_ROLE, "Setup", STR_REGISTERED_CDSID)
+            
+            'NOW DETERMINE IF THERE ARE ANY CONFLICTS
+            If GET_FCT_CONFLICT("Dev", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, STR_PROD_PERMISSIONS) = "*" Then
+                BLN_CONFLICT_EXISTS = True
+            End If
+'            If BLN_CONFLICT_EXISTS = False And GET_FCT_CONFLICT("AccuRev", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "") = "*" Then
+'                BLN_CONFLICT_EXISTS = True
+'            End If
+' calculate if there is a conflict due to the accurev permission level
+            If STR_CODE_PROMOTE = "Yes" And BLN_ACCUREV_END_USER = True Then
+                BLN_ACCUREV_PROMOTER_CONFLICT = True
+                BLN_CONFLICT_EXISTS = True
+            Else
+                BLN_ACCUREV_PROMOTER_CONFLICT = False
+            End If
+            If BLN_CONFLICT_EXISTS = False And GET_FCT_CONFLICT("QA", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, STR_QA_PERMISSIONS) = "*" Then
+                BLN_CONFLICT_EXISTS = True
+            End If
+            If BLN_CONFLICT_EXISTS = False And GET_FCT_CONFLICT("DBA", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "") = "*" Then
+                BLN_CONFLICT_EXISTS = True
+            End If
+            If BLN_CONFLICT_EXISTS = False And GET_FCT_CONFLICT("Scheduler", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "") = "*" Then
+                BLN_CONFLICT_EXISTS = True
+            End If
+            
+'            If BLN_CONFLICT_EXISTS = False And GET_FCT_CONFLICT("Owner", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "") = "*" Then
+'                BLN_CONFLICT_EXISTS = True
+'            End If
+            If BLN_CONFLICT_EXISTS = False And STR_SOD_ROLE = "Data Owner" And GET_OWNER_CONFLICT(STR_CDSID) = True Then
+                BLN_CONFLICT_EXISTS = True
+                BLN_OWNER_ACCUREV = True
+                STR_OWNER_ACCUREV = "*"
+            End If
+'            If RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID.Fields("SOD_ROLE").Value = "Exempt" Then
+'                BLN_CONFLICT_EXISTS = False
+'            End If
+'            If BLN_CONFLICT_EXISTS = True Then
+                STR_CMD = RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID.Fields(0).Value & " "
+    '            STR_CMD = STR_CMD & Chr(11) & "MANAGER: " & RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID.Fields("MANAGER").Value
+    '            STR_CMD = STR_CMD & Chr(11) & FCT_GET_ALL_ROLES(RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID.Fields("CDSID").Value) & ")"
+                'MANAGER_ROLES: [FEDEBOM_IT_CDSID_SOD_ROLE]![SOD_ROLE] & "  " & [CLEANED_CDSID_LOOKUP_TOOL_RESULTS]![MANAGER] & " (" & FCT_GET_ALL_ROLES([FEDEBOM_IT_CDSIDs].[CDSID]) & ")"
+                With WS
+                    .Cells(DBL_EOF, 1) = RST_SOD_PDO_TEAM_BUILDER_UNIQUE_CDSID.Fields(1).Value
+                    .Cells(DBL_EOF, 2) = STR_CMD
+                    .Cells(DBL_EOF, 15) = STR_PROD_PERMISSIONS
+                    .Cells(DBL_EOF, 16) = STR_QA_PERMISSIONS
+                    .Cells(DBL_EOF, 18) = STR_ACCUREV_PERMISSION
+                    .Cells(DBL_EOF, 24) = STR_SETUP_PERMISSION
+'                    .Cells(DBL_EOF, 3) = GET_FCT_CONFLICT("Analyst", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 4) = GET_FCT_CONFLICT("Dev", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 5) = GET_FCT_CONFLICT("System", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 6) = STR_PROMOTER_CONFLICT
+'                    .Cells(DBL_EOF, 7) = GET_FCT_CONFLICT("QA", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, STR_QA_PERMISSIONS)
+'                    .Cells(DBL_EOF, 8) = GET_FCT_CONFLICT("DBA", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 9) = GET_FCT_CONFLICT("Setup", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 10) = GET_FCT_CONFLICT("Admin", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 11) = GET_FCT_CONFLICT("Scheduler", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 12) = GET_FCT_CONFLICT("Console", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+'                    .Cells(DBL_EOF, 13) = STR_OWNER_ACCUREV
+'                    .Cells(DBL_EOF, 14) = GET_FCT_CONFLICT("User", STR_CDSID, STR_REGISTERED_CDSID, STR_SCHEDULER, STR_D4_S2_CDSID, STR_ACCUREV_CODE_PROMOTER_CDSID, STR_SETUP_CDSID, STR_I6S2_CDSID, STR_SOD_ROLE, "")
+                    
+                End With
+             DBL_EOF = DBL_EOF + 1
+'            End If
+            BLN_CONFLICT_EXISTS = False
+            BLN_PROD_CONFLICT = False
+            BLN_QA_CONFLICT = False
+            BLN_ACCUREV_PROMOTER_CONFLICT = False
+            BLN_FEDE_USER_SETUP_CONFLICT = False
+            BLN_OWNER_ACCUREV = False
+            STR_PROD_PERMISSIONS = ""
+            STR_QA_PERMISSIONS = ""
+            STR_SETUP_PERMISSION = ""
+            STR_OWNER_ACCUREV = ""
+            .MoveNext
+        Wend
+'        WS.Cells(45, 1).Select
+    End With
+'    PopulateTheTabProductionCDSID (wsProductionCDSID)
+    Set RST_ORACLE_CDSID = CurrentDb.OpenRecordset("SELECT CDSID FROM ORACLE_CDSID")
+    Set wsProductionCDSID = WB.Worksheets("CDSIDs in Production")
+    With RST_ORACLE_CDSID
+            DBL_ROW = DBL_ROW + 1
+        wsProductionCDSID.Cells(1, 1) = "CDSID"
+        While Not .EOF
+            DBL_ROW = DBL_ROW + 1
+            wsProductionCDSID.Cells(DBL_ROW, 1) = .Fields(0).Value
+            .MoveNext
+        Wend
+    End With
+    PopulateTheEvidenceTab
+    
+    WS.Activate
+    
+'    Stop
+    
+    BLN_MOVE = False
+    DBL_WORK_ROW = 19
+    DBL_KEEP_ROW = 19
+    While WS.Cells(DBL_WORK_ROW, 1) > ""
+        If Trim(WS.Cells(DBL_WORK_ROW, 2)) = "Application Developer / Application Maintenance Personnel" Then
+            If WS.Cells(DBL_WORK_ROW, 15) = "No" Then
+            Else
+                BLN_MOVE = True
+                STR_CONFLICT_DEV = "*"
+                STR_CONFLICT_USER = "*"
+            End If
+'            If BLN_MOVE = False Then
+'            If WS.Cells(4, 16) = WS.Cells(DBL_WORK_ROW, 16) Or WS.Cells(DBL_WORK_ROW, 16) = "No" Then
+'            Else
+'                BLN_MOVE = True
+'                STR_CONFLICT_QA = "*"
+'            End If
+'            If WS.Cells(4, 18) = WS.Cells(DBL_WORK_ROW, 18) Or WS.Cells(DBL_WORK_ROW, 18) = "No" Or WS.Cells(DBL_WORK_ROW, 18) = "Read" Then
+'            Else
+'                BLN_MOVE = True
+'                STR_CONFLICT_QA = "*"
+'            End If
+        End If
+        If Trim(WS.Cells(DBL_WORK_ROW, 2)) = "Data Owner" Then
+            If WS.Cells(13, 18) = WS.Cells(DBL_WORK_ROW, 18) Or WS.Cells(DBL_WORK_ROW, 18) = "No" Then
+            Else
+                BLN_MOVE = True
+                STR_CONFLICT_PROMOTER = "*"
+            End If
+            
+        End If
+        If Trim(WS.Cells(DBL_WORK_ROW, 2)) = "Database Administrator" Then
+            If WS.Cells(DBL_WORK_ROW, 15) = "Yes" Then
+                BLN_MOVE = True
+                STR_CONFLICT_PROMOTER = "*"
+            Else
+            End If
+        End If
+        If Trim(WS.Cells(DBL_WORK_ROW, 2)) = "QA Control" Then
+            If WS.Cells(DBL_WORK_ROW, 15) = "Yes" Then
+                BLN_MOVE = True
+                STR_CONFLICT_USER = "*"
+            Else
+            End If
+        End If
+        If Trim(WS.Cells(DBL_WORK_ROW, 2)) = "Scheduler" Then
+            If WS.Cells(DBL_WORK_ROW, 15) = "Yes" Then
+                BLN_MOVE = True
+                STR_CONFLICT_USER = "*"
+            Else
+            End If
+        End If
+        If Trim(WS.Cells(DBL_WORK_ROW, 2)) = "System Analyst" Then
+            If WS.Cells(DBL_WORK_ROW, 15) = "No" Then
+            Else
+                BLN_MOVE = True
+                STR_CONFLICT_PROMOTER = "*"
+            End If
+        End If
+
+        wsFinalReport.Activate
+        If BLN_MOVE = True Then
+            
+            wsFinalReport.Cells(DBL_KEEP_ROW, 1) = WS.Cells(DBL_WORK_ROW, 1)
+            wsFinalReport.Cells(DBL_KEEP_ROW, 2) = WS.Cells(DBL_WORK_ROW, 2)
+            wsFinalReport.Cells(DBL_KEEP_ROW, 4) = STR_CONFLICT_DEV
+            wsFinalReport.Cells(DBL_KEEP_ROW, 6) = STR_CONFLICT_PROMOTER
+            wsFinalReport.Cells(DBL_KEEP_ROW, 7) = STR_CONFLICT_QA
+            wsFinalReport.Cells(DBL_KEEP_ROW, 14) = STR_CONFLICT_USER
+            wsFinalReport.Cells(DBL_KEEP_ROW, 15) = WS.Cells(DBL_WORK_ROW, 15)
+            wsFinalReport.Cells(DBL_KEEP_ROW, 16) = WS.Cells(DBL_WORK_ROW, 16)
+            wsFinalReport.Cells(DBL_KEEP_ROW, 18) = WS.Cells(DBL_WORK_ROW, 18)
+            wsFinalReport.Cells(DBL_KEEP_ROW, 24) = WS.Cells(DBL_WORK_ROW, 24)
+            DBL_KEEP_ROW = DBL_KEEP_ROW + 1
+            STR_CONFLICT_DEV = ""
+            STR_CONFLICT_PROMOTER = ""
+            STR_CONFLICT_QA = ""
+            STR_CONFLICT_USER = ""
+            BLN_MOVE = False
+        End If
+        DBL_WORK_ROW = DBL_WORK_ROW + 1
+    Wend
+    WS.Visible = xlSheetHidden
+    
+    wsFinalReport.Activate
+    
+    WB.Save
+    
+    Stop
+    MsgBox ("Done populating the SOD")
+
+End Sub
+Sub PopulateTheTabProductionCDSID(wsProductionCDSID As Worksheet)
+'    Dim WS_PRODUCTION_CDSID As Excel.Worksheet
+'    Set WS_PRODUCTION_CDSID = WB.Worksheets("CDSIDs in Production")
+    Dim DBL_ROW As Double
+    Dim RST_ORACLE_CDSID As Recordset
+    Set RST_ORACLE_CDSID = CurrentDb.OpenRecordset("SELECT CDSID FROM ORACLE_CDSID")
+    With RST_ORACLE_CDSID
+        wsProductionCDSID.Cells(1, 1) = "CDSID"
+        While Not .EOF
+            DBL_ROW = DBL_ROW + 1
+            wsProductionCDSID.Cells(DBL_ROW, 1) = "CDSID"
+            .MoveNext
+        Wend
+    End With
+End Sub
+Sub UpdateSODallowingOneRecordPerRole()
+    Dim STR_PDO_TEAM As String
+    Dim intEOF As Integer
+    Dim STR_SCANNED As String
+    Dim STR_PRI_KEY As String
+    Dim STR_ENVIRONMENT As String
+    Dim STR_CONFIG As String
+    Dim STR_EXT_SYSTEM As String
+    Dim STR_EXT_SERVER As String
+    Dim STR_EX_DB As String
+    Dim STR_USER As String
+    Dim STR_SQL As String
+    Dim INT_REC_LEN As Integer
+    Dim INT_CONFIG_BREAK As Integer
+    Dim INT_EOF As Integer
+    Dim INT_ENV_BREAK As Integer
+    Dim BLN_SKIP_RECORD As Boolean
+    Dim appExcel As Excel.Application
+    Dim WB As Excel.Workbook
+    Dim WS As Excel.Worksheet
+    Set appExcel = CreateObject("Excel.Application")
+'    Set WB = appExcel.Workbooks.Open("P:\Audit Regulatory\Security & Controls\Separation of Duties\WIP\FEDEBOM_Seperation Of Duties.xlsx")
+    Set WB = appExcel.Workbooks.Open("C:\Users\rrose66\Downloads\FEDEBOM_Seperation Of Duties.xlsx")
+    Set WS = Excel.Worksheets("FEDEB Separation of Duties Cntl")
+    appExcel.Visible = True
+    appExcel.WindowState = xlMaximized
+    Dim BLN_CONTINUE As Boolean
+    BLN_CONTINUE = True
+    BLN_SKIP_RECORD = False
+    INT_EOF = 45
+    Dim RST_SOD_PDO_TEAM_BUILDER As Recordset
+    Set RST_SOD_PDO_TEAM_BUILDER = CurrentDb.OpenRecordset("SOD_PDO_TEAM_BUILDER")
+    With RST_SOD_PDO_TEAM_BUILDER
+        While Not .EOF
+            STR_PDO_TEAM = "PDO Team"
+            With WS
+                        .Cells(INT_EOF, 1) = RST_SOD_PDO_TEAM_BUILDER.Fields(0).Value
+                        .Cells(INT_EOF, 2) = RST_SOD_PDO_TEAM_BUILDER.Fields(1).Value
+                        If RST_SOD_PDO_TEAM_BUILDER.Fields(4).Value = "DEVELOPER" Then
+                            .Cells(INT_EOF, 18) = "Limited"
+                        End If
+                        If RST_SOD_PDO_TEAM_BUILDER.Fields(5).Value = "READ ONLY" Then
+                            .Cells(INT_EOF, 18) = "Read"
+                        End If
+                        If RST_SOD_PDO_TEAM_BUILDER.Fields(6).Value = "LEAD DEVELOPER" Then
+                            .Cells(INT_EOF, 18) = "Yes"
+                        End If
+                        
+                        If Len(.Cells(INT_EOF, 1)) > 0 Then
+                            If InStr(1, .Cells(INT_EOF, 2), "BOM ADMIN") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Business PROD Support") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Buyer") > 0 Then
+                                .Cells(INT_EOF, 15) = "Limited"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "CAD Author") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Change Analyst Team") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "R ENGINEER") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Data Admin") > 0 Then
+                                .Cells(INT_EOF, 15) = ""
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Engineer Central Team") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "External Viewer") > 0 Then
+                                .Cells(INT_EOF, 15) = "Limited"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Finance Analyst") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Information Standards Team") > 0 Then
+                                .Cells(INT_EOF, 15) = "Limited"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "JV BOM Admin") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "JV CAD Author") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "JV Engineer") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "JV Finance Analyst") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "JV PMT Leader") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "JV PPM Analyst") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "PMT Leader") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "PPM Analyst") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "PROD Support (IT)") > 0 Then
+                                .Cells(INT_EOF, 15) = "Limited"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Program Management") > 0 Then
+                                .Cells(INT_EOF, 15) = "Yes"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Supplier Engineer") > 0 Then
+                                .Cells(INT_EOF, 15) = "Limited"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "Viewer") > 0 Then
+                                .Cells(INT_EOF, 15) = "Limited"
+                            End If
+                            If InStr(1, .Cells(INT_EOF, 2), "WERS Refresh Admin") > 0 Then
+                                .Cells(INT_EOF, 15) = "Limited"
+                            End If
+                            'NOW flag the user setup
+                            If InStr(1, .Cells(INT_EOF, 2), "Business PROD Support") > 0 Then
+'                                Stop
+                                .Cells(INT_EOF, 24) = "Yes"
+                            End If
+                        End If
+            End With
+            INT_EOF = INT_EOF + 1
+            .MoveNext
+        Wend
+    End With
+    WB.Save
+    WB.Close
+    appExcel.Quit
+
+End Sub
+Function GET_FCT_CONFLICT( _
+    ByRef strConstraint As String, _
+    ByRef strCDSID As String, _
+    ByRef strRegisteredCDSID As String, _
+    ByRef SCHEDULER_CDSID As String, _
+    ByRef D4_S2_CDSID As String, _
+    ByRef ACCUREV_CODE_PROMOTER_CDSID As String, _
+    ByRef SETUP_CDSID As String, _
+    ByRef I6_S2_CDSID As String, _
+    ByRef SOD_ROLE As String, _
+    ByRef PERMISSION_LEVEL As String _
+    ) As String
+    
+    Dim STR_SQL As String
+    Dim BLN_DR_ENGINEER As Boolean
+    Dim BLN_Business_PROD_Support As Boolean
+    Dim RST_DEVELOPERS_BY_ROLE_ENV As Recordset
+    Dim RST_D4S2_CDSID_ROLE_IN_DEV_FROM_KULDEEP As Recordset
+    If strConstraint = "Owner" And SOD_ROLE = "Data Owner" Then
+'        Stop
+        Dim RST_ACCUREV As Recordset
+        Set RST_ACCUREV = CurrentDb.OpenRecordset("SELECT ROLE FROM ACCUREV WHERE CDSID = " & Chr(34) & strCDSID & Chr(34))
+        If strRegisteredCDSID > "" And RST_ACCUREV.RecordCount > 1 Then
+                GET_FCT_CONFLICT = "*"
+        Else
+                GET_FCT_CONFLICT = ""
+        End If
+    End If
+    If strConstraint = "Dev" And SOD_ROLE = "Application Developer / Application Maintenance Personnel" Then
+        BLN_DR_ENGINEER = False
+        BLN_Business_PROD_Support = False
+        If strRegisteredCDSID = "" Then
+            GET_FCT_CONFLICT = ""
+        Else
+            If D4_S2_CDSID <> "" Then
+                GET_FCT_CONFLICT = "*"
+            End If
+        End If
+    End If
+    If strConstraint = "QA" And SOD_ROLE = "QA Control" Then
+'        Stop
+        BLN_DR_ENGINEER = False
+        BLN_Business_PROD_Support = False
+        If PERMISSION_LEVEL = "Limited" Then
+            Stop
+            GET_FCT_CONFLICT = ""
+        Else
+            GET_FCT_CONFLICT = "*"
+        End If
+        If strRegisteredCDSID = "" Then
+            GET_FCT_CONFLICT = ""
+        Else
+            If D4_S2_CDSID <> "" Then
+                GET_FCT_CONFLICT = "*"
+            End If
+        End If
+    End If
+    If strConstraint = "Owner" Then
+        If SCHEDULER_CDSID = "" Then
+            GET_FCT_CONFLICT = ""
+        Else
+            GET_FCT_CONFLICT = "*"
+        End If
+    End If
+    If strConstraint = "Scheduler" Then
+        If SCHEDULER_CDSID = "" Then
+            GET_FCT_CONFLICT = ""
+        Else
+            GET_FCT_CONFLICT = "*"
+        End If
+    End If
+    If strConstraint = "Setup" Then
+        If SETUP_CDSID = "" Then
+            If ACCUREV_CODE_PROMOTER_CDSID = "" Then
+                GET_FCT_CONFLICT = ""
+            End If
+        Else
+            If ACCUREV_CODE_PROMOTER_CDSID = "" Then
+                GET_FCT_CONFLICT = ""
+            Else
+                GET_FCT_CONFLICT = "*"
+            End If
+        End If
+'        Dim RST_ORACLE_CDSID_ROLE_REGISTERED_USERS As Recordset
+'        BLN_DR_ENGINEER = False
+'        BLN_Business_PROD_Support = False
+'        STR_SQL = ""
+'        STR_SQL = STR_SQL & "SELECT ROLE "
+'        STR_SQL = STR_SQL & " FROM REGISTERED_CDSID_ROLE_FROM_ORACLE "
+'        STR_SQL = STR_SQL & "WHERE CDSID = " & Chr(34) & strCDSID & Chr(34)
+'        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = CurrentDb.OpenRecordset(STR_SQL)
+'        With RST_ORACLE_CDSID_ROLE_REGISTERED_USERS
+'            While Not .EOF
+'                If RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Fields(0).Value = "BUSINESS PROD SUPPORT" Then
+'                    GET_FCT_CONFLICT = "*"
+'                    .MoveLast
+'                Else
+'                    GET_FCT_CONFLICT = ""
+'                End If
+'                .MoveNext
+'            Wend
+'        End With
+    End If
+    If strConstraint = "User" Then
+        If strRegisteredCDSID > "" Then
+            GET_FCT_CONFLICT = "*"
+        Else
+            GET_FCT_CONFLICT = ""
+        End If
+    End If
+End Function
+Function GET_FCT_ACCESS_LEVEL( _
+    ByRef intCountOfRoles, _
+    ByRef strCDSID As String, _
+    ByRef strRoleFromSOD As String, _
+    ByRef strConstraint As String, _
+    ByRef strRegisteredCDSID As String _
+    ) As String
+    
+    Dim BLN_YES As Boolean
+    Dim BLN_LIMITED As Boolean
+    Dim BLN_LIMITED1 As Boolean
+    Dim BLN_READ As Boolean
+    Dim BLN_NO As Boolean
+    Dim STR_ROLE_FIELD_VALUE As String
+    Dim RST_ORACLE_CDSID_ROLE_REGISTERED_USERS As Recordset
+    Dim RST_D4S2_CDSID_ROLE_IN_DEV_FROM_KULDEEP As Recordset
+    If strConstraint = "QA" Then
+'    Stop
+    End If
+'    If strConstraint = "Owner" And strRoleFromSOD = "Data Owner" Then
+'        Stop
+'    End If
+    If strConstraint = "QA" And strRoleFromSOD = "Application Developer / Application Maintenance Personnel" Then
+        BLN_YES = False
+        BLN_LIMITED = False
+        BLN_LIMITED1 = False
+        BLN_READ = False
+        BLN_NO = False
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = CurrentDb.OpenRecordset("select role from I6S1 where cdsid = " & Chr(34) & strCDSID & Chr(34))
+        With RST_ORACLE_CDSID_ROLE_REGISTERED_USERS
+            While Not .EOF
+                STR_ROLE_FIELD_VALUE = RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Fields(0).Value
+                If STR_ROLE_FIELD_VALUE = "D&R ENGINEER" Then
+                    BLN_LIMITED1 = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "VIEWER" Or STR_ROLE_FIELD_VALUE = "EXTERNAL VIEWER" Then
+                    BLN_READ = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "BUSINESS PROD SUPPORT" _
+                Or STR_ROLE_FIELD_VALUE = "CAD AUTHOR" _
+                Or STR_ROLE_FIELD_VALUE = "DATA ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "ENGINEER CENTRAL TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "PMT LEADER" _
+                Then
+                    BLN_YES = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BUYER" _
+                Or STR_ROLE_FIELD_VALUE = "CHANGE ANALYST TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "INFORMATION STANDARDS TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "JV BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "JV ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "JV FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "JV PMT LEADER" _
+                Or STR_ROLE_FIELD_VALUE = "JV PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PROD SUPPORT (IT)" _
+                Or STR_ROLE_FIELD_VALUE = "PROGRAM MANAGEMENT" _
+                Or STR_ROLE_FIELD_VALUE = "SUPPLIER ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "WERS REFRESH ADMIN" _
+                Then
+                    BLN_LIMITED = True
+                End If
+                .MoveNext
+            Wend
+            If BLN_YES = True Then
+                GET_FCT_ACCESS_LEVEL = "Yes"
+            Else
+                If BLN_LIMITED = True Then
+                    GET_FCT_ACCESS_LEVEL = "Limited"
+                Else
+                    If BLN_LIMITED1 = True Then
+                        GET_FCT_ACCESS_LEVEL = "Limited1"
+                    Else
+                        If BLN_READ = True Then
+                            GET_FCT_ACCESS_LEVEL = "Read"
+                        End If
+                    End If
+                End If
+            End If
+        End With
+        RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Close
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = Nothing
+    End If
+    
+    If strConstraint = "PROD" And strRoleFromSOD = "Application Developer / Application Maintenance Personnel" Then
+        BLN_YES = False
+        BLN_LIMITED = False
+        BLN_LIMITED1 = False
+        BLN_READ = False
+        BLN_NO = False
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = CurrentDb.OpenRecordset("select role from ORACLE_CDSID_ROLE_REGISTERED_USERS where cdsid = " & Chr(34) & strCDSID & Chr(34))
+        With RST_ORACLE_CDSID_ROLE_REGISTERED_USERS
+            While Not .EOF
+                STR_ROLE_FIELD_VALUE = RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Fields(0).Value
+                If STR_ROLE_FIELD_VALUE = "D&R ENGINEER" Then
+                    BLN_LIMITED1 = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "VIEWER" Or STR_ROLE_FIELD_VALUE = "EXTERNAL VIEWER" Then
+                    BLN_READ = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "BUSINESS PROD SUPPORT" _
+                Or STR_ROLE_FIELD_VALUE = "CAD AUTHOR" _
+                Or STR_ROLE_FIELD_VALUE = "DATA ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "ENGINEER CENTRAL TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "PMT LEADER" _
+                Then
+                    BLN_YES = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BUYER" _
+                Or STR_ROLE_FIELD_VALUE = "CHANGE ANALYST TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "INFORMATION STANDARDS TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "JV BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "JV ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "JV FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "JV PMT LEADER" _
+                Or STR_ROLE_FIELD_VALUE = "JV PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PROD SUPPORT (IT)" _
+                Or STR_ROLE_FIELD_VALUE = "PROGRAM MANAGEMENT" _
+                Or STR_ROLE_FIELD_VALUE = "SUPPLIER ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "WERS REFRESH ADMIN" _
+                Then
+                    BLN_LIMITED = True
+                End If
+                .MoveNext
+            Wend
+            If BLN_YES = True Then
+                GET_FCT_ACCESS_LEVEL = "Yes"
+            Else
+                If BLN_LIMITED = True Then
+                    GET_FCT_ACCESS_LEVEL = "Limited"
+                Else
+                    If BLN_LIMITED1 = True Then
+                        GET_FCT_ACCESS_LEVEL = "Limited1"
+                    Else
+                        If BLN_READ = True Then
+                            GET_FCT_ACCESS_LEVEL = "Read"
+                        End If
+                    End If
+                End If
+            End If
+        End With
+        RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Close
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = Nothing
+    End If
+    If strConstraint = "PROD" And strRoleFromSOD = "QA Control" Then
+'        Stop
+        BLN_YES = False
+        BLN_LIMITED = False
+        BLN_LIMITED1 = False
+        BLN_READ = False
+        BLN_NO = False
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = CurrentDb.OpenRecordset("select role from ORACLE_CDSID_ROLE_REGISTERED_USERS where cdsid = " & Chr(34) & strCDSID & Chr(34))
+        With RST_ORACLE_CDSID_ROLE_REGISTERED_USERS
+            While Not .EOF
+                STR_ROLE_FIELD_VALUE = RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Fields(0).Value
+                If STR_ROLE_FIELD_VALUE = "D&R ENGINEER" Then
+                    BLN_LIMITED1 = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "VIEWER" Or STR_ROLE_FIELD_VALUE = "EXTERNAL VIEWER" Then
+                    BLN_READ = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "BUSINESS PROD SUPPORT" _
+                Or STR_ROLE_FIELD_VALUE = "CAD AUTHOR" _
+                Or STR_ROLE_FIELD_VALUE = "DATA ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "ENGINEER CENTRAL TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "PMT LEADER" _
+                Then
+                    BLN_YES = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BUYER" _
+                Or STR_ROLE_FIELD_VALUE = "CHANGE ANALYST TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "INFORMATION STANDARDS TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "JV BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "JV ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "JV FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "JV PMT LEADER" _
+                Or STR_ROLE_FIELD_VALUE = "JV PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PROD SUPPORT (IT)" _
+                Or STR_ROLE_FIELD_VALUE = "PROGRAM MANAGEMENT" _
+                Or STR_ROLE_FIELD_VALUE = "SUPPLIER ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "WERS REFRESH ADMIN" _
+                Then
+                    BLN_LIMITED = True
+                End If
+                .MoveNext
+            Wend
+            If BLN_YES = True Then
+                GET_FCT_ACCESS_LEVEL = "Yes"
+            Else
+                If BLN_LIMITED = True Then
+                    GET_FCT_ACCESS_LEVEL = "Limited"
+                Else
+                    If BLN_LIMITED1 = True Then
+                        GET_FCT_ACCESS_LEVEL = "Limited1"
+                    Else
+                        If BLN_READ = True Then
+                            GET_FCT_ACCESS_LEVEL = "Read"
+                        End If
+                    End If
+                End If
+            End If
+        End With
+        RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Close
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = Nothing
+    End If
+
+    If strConstraint = "QA" And strRoleFromSOD = "QA Control" Then
+        Dim RST_QA As Recordset
+        Set RST_QA = CurrentDb.OpenRecordset("SELECT CDSID FROM I6S1 WHERE CDSID = " & Chr(34) & strCDSID & Chr(34))
+        If RST_QA.RecordCount > 0 Then
+            GET_FCT_ACCESS_LEVEL = "Yes"
+        Else
+            GET_FCT_ACCESS_LEVEL = "No"
+        End If
+        RST_QA.Close
+        Set RST_QA = Nothing
+    End If
+    If strConstraint = "AccuRev" And strRoleFromSOD = "Program Migration Control" Then
+        Dim RST_ACCUREV As Recordset
+        Set RST_ACCUREV = CurrentDb.OpenRecordset("SELECT ROLE FROM ACCUREV WHERE CDSID = " & Chr(34) & strCDSID & Chr(34))
+        If RST_ACCUREV.RecordCount > 0 Then
+            GET_FCT_ACCESS_LEVEL = "Yes"
+                If RST_ACCUREV.Fields(0).Value = "READ ONLY" Then
+                    GET_FCT_ACCESS_LEVEL = "Read"
+                ElseIf RST_ACCUREV.Fields(0).Value = "DEVELOPER" Then
+                    GET_FCT_ACCESS_LEVEL = "Limited"
+                ElseIf RST_ACCUREV.Fields(0).Value = "ADMIN" Then
+                    GET_FCT_ACCESS_LEVEL = "Yes"
+                ElseIf RST_ACCUREV.Fields(0).Value = "LEAD DEVELOPER" Then
+                    GET_FCT_ACCESS_LEVEL = "Yes"
+                End If
+
+        Else
+            GET_FCT_ACCESS_LEVEL = "No"
+        End If
+    End If
+    If strConstraint = "Setup" Then
+        Dim BLN_SETUP As Boolean
+        BLN_SETUP = False
+        If strCDSID = "AVISWAN9" Then
+'            Stop
+        End If
+        'if cdsid is in accurev then
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = CurrentDb.OpenRecordset("select role from ORACLE_CDSID_ROLE_REGISTERED_USERS where cdsid = " & Chr(34) & strCDSID & Chr(34))
+'        If RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.RecordCount > 0 Then
+'            RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.MoveFirst
+'            RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.MoveLast
+'            If RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.RecordCount = 1 Then
+'                If RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Fields(0).Value = "BUSINESS PROD SUPPORT" Then
+'                    GET_FCT_ACCESS_LEVEL = "Yes"
+'                Else
+'                    GET_FCT_ACCESS_LEVEL = "No"
+'
+'                End If
+'            Else
+        With RST_ORACLE_CDSID_ROLE_REGISTERED_USERS
+            While Not .EOF
+                If RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Fields(0).Value = "BUSINESS PROD SUPPORT" Then
+                    BLN_SETUP = True
+                    .MoveLast
+                Else
+                End If
+                .MoveNext
+            Wend
+        End With
+        If BLN_SETUP = True Then
+            GET_FCT_ACCESS_LEVEL = "Yes"
+        Else
+            GET_FCT_ACCESS_LEVEL = "No"
+        End If
+'            End If
+'        Else
+'            GET_FCT_ACCESS_LEVEL = "No"
+'        End If
+        RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Close
+        Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = Nothing
+    End If
+    If GET_FCT_ACCESS_LEVEL = "" Then
+'    Stop
+    End If
+End Function
+Function FCT_GET_ALL_ROLES(ByRef strCDSID As String) As String
+    Dim STR_SQL As String
+    Dim RST_ALL_ROLES As Recordset
+    Set RST_ALL_ROLES = CurrentDb.OpenRecordset("SELECT ROLE FROM ORACLE_CDSID_ROLE_REGISTERED_USERS  WHERE CDSID = " & Chr(34) & strCDSID & Chr(34))
+    If RST_ALL_ROLES.RecordCount > 0 Then
+        FCT_GET_ALL_ROLES = FCT_GET_ALL_ROLES & "Registered FEDEBOM Roles: "
+        With RST_ALL_ROLES
+            While Not .EOF
+                FCT_GET_ALL_ROLES = FCT_GET_ALL_ROLES & "_" & .Fields(0).Value
+                .MoveNext
+            Wend
+        End With
+        RST_ALL_ROLES.Close
+        Set RST_ALL_ROLES = Nothing
+    End If
+ 
+    
+    STR_SQL = "SELECT ROLE FROM D4S2_CDSID_ROLE_IN_DEV_FROM_KULDEEP where CDSID = " & Chr(34) & strCDSID & Chr(34)
+    Set RST_ALL_ROLES = CurrentDb.OpenRecordset(STR_SQL)
+'    Stop
+    If RST_ALL_ROLES.RecordCount > 0 Then
+        With RST_ALL_ROLES
+            FCT_GET_ALL_ROLES = FCT_GET_ALL_ROLES & "  DEV Roles: "
+            While Not .EOF
+                FCT_GET_ALL_ROLES = FCT_GET_ALL_ROLES & "_" & .Fields(0).Value
+                .MoveNext
+            Wend
+        End With
+    End If
+    RST_ALL_ROLES.Close
+    Set RST_ALL_ROLES = Nothing
+    Set RST_ALL_ROLES = CurrentDb.OpenRecordset("SELECT ROLE FROM ACCUREV WHERE CDSID = " & Chr(34) & strCDSID & Chr(34))
+    If RST_ALL_ROLES.RecordCount > 0 Then
+        FCT_GET_ALL_ROLES = FCT_GET_ALL_ROLES & "  AccuRev Roles: "
+        With RST_ALL_ROLES
+            While Not .EOF
+                FCT_GET_ALL_ROLES = FCT_GET_ALL_ROLES & "_" & .Fields(0).Value
+                .MoveNext
+            Wend
+        End With
+        RST_ALL_ROLES.Close
+        Set RST_ALL_ROLES = Nothing
+    End If
+    
+End Function
+Function FCT_AUTO_RUN() As Boolean
+'    Stop
+    UpdateSODuniqueCDSIDconstraint
+    FCT_AUTO_RUN = True
+End Function
+Sub PopulateTheEvidenceTab()
+'    Dim RST_ORACLE_CDSID_ROLE As Recordset
+'    Set RST_ORACLE_CDSID_ROLE = CurrentDb.OpenRecordset("SELECT * FROM ORACLE_CDSID_ROLE")
+'    Dim wsProductionRoleAndCDSID As Worksheet
+'    Set wsProductionRoleAndCDSID = WB.Worksheets("Production CDSID and Role")
+'    DBL_ROW = 0
+'    With RST_ORACLE_CDSID_ROLE
+'        DBL_ROW = DBL_ROW + 1
+'        wsProductionRoleAndCDSID.Cells(1, 1) = "CDSID"
+'        wsProductionRoleAndCDSID.Cells(1, 2) = "ROLE"
+'        While Not .EOF
+'            DBL_ROW = DBL_ROW + 1
+'            wsProductionRoleAndCDSID.Cells(DBL_ROW, 1) = RST_ORACLE_CDSID_ROLE.Fields(0).Value
+'            wsProductionRoleAndCDSID.Cells(DBL_ROW, 2) = RST_ORACLE_CDSID_ROLE.Fields(1).Value
+'            .MoveNext
+'        Wend
+'    End With
+'    Stop
+
+
+'    DBL_ROW = 1
+'    Dim wsEvidences As Excel.Worksheet
+'    Dim strLine As String
+'    Set wsEvidences = WB.Worksheets("Evidences")
+'    wsEvidences.Activate
+'    wsEvidences.Cells(DBL_ROW, 1) = "Business Case Question"
+'    wsEvidences.Cells(DBL_ROW, 2) = "CDSID"
+'
+''    While wsEvidences.Cells(DBL_ROW, 1) > ""
+''        DBL_ROW = DBL_ROW + 1
+''    Wend
+'    DBL_ROW = DBL_ROW + 1
+'    Open "C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\SOURCE_OF_TRUTH_DATA\RemoveTheseCDSIDs.txt" For Input As #1
+'    While Not EOF(1)
+'        Line Input #1, strLine
+'        If strLine > "" Then
+'        wsEvidences.Cells(DBL_ROW, 1) = "What is the business case for keeping this CDSID registered in FEDEBOM?"
+'        wsEvidences.Cells(DBL_ROW, 2) = strLine
+'        DBL_ROW = DBL_ROW + 1
+'        End If
+'    Wend
+'
+'    Dim RST_SOD_Evidence_Users_With_Prod As Recordset
+'    Set RST_SOD_Evidence_Users_With_Prod = CurrentDb.OpenRecordset("SELECT * FROM SOD_Evidence_Users_With_Prod")
+'    With RST_SOD_Evidence_Users_With_Prod
+'        While Not .EOF
+'            wsEvidences.Cells(DBL_ROW, 1) = .Fields(0).Value
+'            wsEvidences.Cells(DBL_ROW, 2) = .Fields(1).Value
+'            DBL_ROW = DBL_ROW + 1
+'            .MoveNext
+'        Wend
+'    End With
+'
+'
+'    Dim RST_SOD_USERS_WITH_DEV_AND_QA As Recordset
+'    Set RST_SOD_USERS_WITH_DEV_AND_QA = CurrentDb.OpenRecordset("SELECT * FROM SOD_USERS_WITH_DEV_AND_QA")
+'    With RST_SOD_USERS_WITH_DEV_AND_QA
+'        While Not .EOF
+'            wsEvidences.Cells(DBL_ROW, 1) = .Fields(0).Value
+'            wsEvidences.Cells(DBL_ROW, 2) = .Fields(1).Value
+'            DBL_ROW = DBL_ROW + 1
+'            .MoveNext
+'        Wend
+'    End With
+'
+'
+'
+'    Dim RST_SOD_EVIDENCE_USERS_WITH_PROD_EDIT_AND_USER_SETUP As Recordset
+'    Set RST_SOD_EVIDENCE_USERS_WITH_PROD_EDIT_AND_USER_SETUP = CurrentDb.OpenRecordset("SELECT * FROM SOD_EVIDENCE_USERS_WITH_PROD_EDIT_AND_USER_SETUP")
+'    With RST_SOD_EVIDENCE_USERS_WITH_PROD_EDIT_AND_USER_SETUP
+'        While Not .EOF
+'            wsEvidences.Cells(DBL_ROW, 1) = .Fields(0).Value
+'            wsEvidences.Cells(DBL_ROW, 2) = .Fields(1).Value
+'            DBL_ROW = DBL_ROW + 1
+'            .MoveNext
+'        Wend
+'    End With
+'    Stop
+'    Columns("A:B").Select
+'    Columns("A:B").EntireColumn.AutoFit
+'    Range("A1").Select
+'    With ActiveWindow
+'        .SplitColumn = 0
+'        .SplitRow = 1
+'    End With
+'    ActiveWindow.FreezePanes = True
+'    Sheets.Add
+'    ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:= _
+'        "Evidences!R1C1:R559C2", Version:=6).CreatePivotTable TableDestination:= _
+'        "Sheet1!R3C1", TableName:="PivotTable1", DefaultVersion:=6
+'    Sheets("Sheet1").Select
+'    Cells(3, 1).Select
+'    With ActiveSheet.PivotTables("PivotTable1")
+'        .ColumnGrand = True
+'        .HasAutoFormat = True
+'        .DisplayErrorString = False
+'        .DisplayNullString = True
+'        .EnableDrilldown = True
+'        .ErrorString = ""
+'        .MergeLabels = False
+'        .NullString = ""
+'        .PageFieldOrder = 2
+'        .PageFieldWrapCount = 0
+'        .PreserveFormatting = True
+'        .RowGrand = True
+'        .SaveData = True
+'        .PrintTitles = False
+'        .RepeatItemsOnEachPrintedPage = True
+'        .TotalsAnnotation = False
+'        .CompactRowIndent = 1
+'        .InGridDropZones = False
+'        .DisplayFieldCaptions = True
+'        .DisplayMemberPropertyTooltips = False
+'        .DisplayContextTooltips = True
+'        .ShowDrillIndicators = True
+'        .PrintDrillIndicators = False
+'        .AllowMultipleFilters = False
+'        .SortUsingCustomLists = True
+'        .FieldListSortAscending = False
+'        .ShowValuesRow = False
+'        .CalculatedMembersInFilters = False
+'        .RowAxisLayout xlCompactRow
+'    End With
+'    With ActiveSheet.PivotTables("PivotTable1").PivotCache
+'        .RefreshOnFileOpen = False
+'        .MissingItemsLimit = xlMissingItemsDefault
+'    End With
+'    ActiveSheet.PivotTables("PivotTable1").RepeatAllLabels xlRepeatLabels
+'    With ActiveSheet.PivotTables("PivotTable1").PivotFields( _
+'        "Business Case Question")
+'        .Orientation = xlRowField
+'        .Position = 1
+'    End With
+'    ActiveSheet.PivotTables("PivotTable1").AddDataField ActiveSheet.PivotTables( _
+'        "PivotTable1").PivotFields("CDSID"), "Count of CDSID", xlCount
+'
+'    ActiveSheet.Name = "Evidence Report"
+
+End Sub
+Function GET_ACCUREV_PERMISSIONS(ByRef STR_CDSID As String) As String
+'Stop
+    Dim BLN_PROMOTER As Boolean
+    Dim BLN_END_USER As Boolean
+    Dim BLN_ADMIN As Boolean
+    Dim BLN_VIEWER As Boolean
+    
+    Dim RST_ACCUREV As Recordset
+    
+    BLN_PROMOTER = False
+    BLN_END_USER = False
+    BLN_ADMIN = False
+    BLN_VIEWER = False
+    Set RST_ACCUREV = CurrentDb.OpenRecordset("SELECT ROLE FROM ACCUREV WHERE CDSID = " & Chr(34) & STR_CDSID & Chr(34))
+    If RST_ACCUREV.RecordCount > 0 Then
+        With RST_ACCUREV
+            While Not .EOF
+                If RST_ACCUREV.Fields(0).Value = "READ ONLY" Then
+                    BLN_VIEWER = True
+                ElseIf RST_ACCUREV.Fields(0).Value = "DEVELOPER" Then
+                    BLN_END_USER = True
+                ElseIf RST_ACCUREV.Fields(0).Value = "ADMIN" Then
+                    BLN_END_USER = True
+                ElseIf RST_ACCUREV.Fields(0).Value = "LEAD DEVELOPER" Then
+                    BLN_END_USER = True
+                ElseIf RST_ACCUREV.Fields(0).Value = "LEAD" Then
+                    BLN_PROMOTER = True
+                End If
+                .MoveNext
+            Wend
+        End With
+        If BLN_PROMOTER = True Then
+            GET_ACCUREV_PERMISSIONS = "Yes"
+        Else
+            If BLN_END_USER = True Then
+                GET_ACCUREV_PERMISSIONS = "Limited"
+            Else
+                If BLN_VIEWER = True Then
+                    GET_ACCUREV_PERMISSIONS = "Read"
+                End If
+            End If
+        End If
+    Else
+        GET_ACCUREV_PERMISSIONS = "No"
+    End If
+
+End Function
+Function GET_FCT_ACCUREV_END_USER(ByRef STR_CDSID As String) As Boolean
+    Dim BLN_END_USER As Boolean
+    Dim RST_ACCUREV As Recordset
+'    Stop
+    BLN_END_USER = False
+    Set RST_ACCUREV = CurrentDb.OpenRecordset("SELECT ROLE FROM ACCUREV WHERE CDSID = " & Chr(34) & STR_CDSID & Chr(34))
+    With RST_ACCUREV
+        While Not .EOF
+            If RST_ACCUREV.Fields(0).Value = "DEVELOPER" Then
+                BLN_END_USER = True
+            ElseIf RST_ACCUREV.Fields(0).Value = "ADMIN" Then
+                BLN_END_USER = True
+            ElseIf RST_ACCUREV.Fields(0).Value = "LEAD DEVELOPER" Then
+                BLN_END_USER = True
+            End If
+            .MoveNext
+        Wend
+    End With
+    If BLN_END_USER = True Then
+        GET_FCT_ACCUREV_END_USER = True
+    End If
+End Function
+Function GET_FCT_QA_PERMISSION_LEVEL(ByRef STR_CDSID As String) As String
+    If STR_CDSID = "EKRISHN4" Then
+'        Stop
+    End If
+    Dim BLN_YES As Boolean
+    Dim BLN_LIMITED As Boolean
+    Dim BLN_LIMITED1 As Boolean
+    Dim BLN_READ As Boolean
+    Dim BLN_NO As Boolean
+    Dim STR_ROLE_FIELD_VALUE As String
+    Dim RST_QA As Recordset
+    Dim RST_D4S2_CDSID_ROLE_IN_DEV_FROM_KULDEEP As Recordset
+    BLN_YES = False
+    BLN_LIMITED = False
+    BLN_LIMITED1 = False
+    BLN_READ = False
+    BLN_NO = False
+    Set RST_QA = CurrentDb.OpenRecordset("select role from I6S1 where cdsid = " & Chr(34) & STR_CDSID & Chr(34))
+    If RST_QA.RecordCount > 0 Then
+    With RST_QA
+        While Not .EOF
+            STR_ROLE_FIELD_VALUE = RST_QA.Fields(0).Value
+            If STR_ROLE_FIELD_VALUE = "D&R ENGINEER" Then
+                BLN_LIMITED1 = True
+            End If
+            If STR_ROLE_FIELD_VALUE = "VIEWER" Or STR_ROLE_FIELD_VALUE = "EXTERNAL VIEWER" Then
+                BLN_READ = True
+            End If
+            If STR_ROLE_FIELD_VALUE = "BOM ADMIN" _
+            Or STR_ROLE_FIELD_VALUE = "BUSINESS PROD SUPPORT" _
+            Or STR_ROLE_FIELD_VALUE = "CAD AUTHOR" _
+            Or STR_ROLE_FIELD_VALUE = "DATA ADMIN" _
+            Or STR_ROLE_FIELD_VALUE = "ENGINEER CENTRAL TEAM" _
+            Or STR_ROLE_FIELD_VALUE = "PMT LEADER" _
+            Then
+                BLN_YES = True
+            End If
+            If STR_ROLE_FIELD_VALUE = "BUYER" _
+            Or STR_ROLE_FIELD_VALUE = "CHANGE ANALYST TEAM" _
+            Or STR_ROLE_FIELD_VALUE = "FINANCE ANALYST" _
+            Or STR_ROLE_FIELD_VALUE = "INFORMATION STANDARDS TEAM" _
+            Or STR_ROLE_FIELD_VALUE = "JV BOM ADMIN" _
+            Or STR_ROLE_FIELD_VALUE = "JV CAD AUTHOR" _
+            Or STR_ROLE_FIELD_VALUE = "JV ENGINEER" _
+            Or STR_ROLE_FIELD_VALUE = "JV FINANCE ANALYST" _
+            Or STR_ROLE_FIELD_VALUE = "JV PMT LEADER" _
+            Or STR_ROLE_FIELD_VALUE = "JV PPM ANALYST" _
+            Or STR_ROLE_FIELD_VALUE = "PPM ANALYST" _
+            Or STR_ROLE_FIELD_VALUE = "PROD SUPPORT (IT)" _
+            Or STR_ROLE_FIELD_VALUE = "PROGRAM MANAGEMENT" _
+            Or STR_ROLE_FIELD_VALUE = "SUPPLIER ENGINEER" _
+            Or STR_ROLE_FIELD_VALUE = "WERS REFRESH ADMIN" _
+            Then
+                BLN_LIMITED = True
+            End If
+            .MoveNext
+        Wend
+        If BLN_YES = True Then
+            GET_FCT_QA_PERMISSION_LEVEL = "Yes"
+        Else
+            If BLN_LIMITED = True Then
+                GET_FCT_QA_PERMISSION_LEVEL = "Limited"
+            Else
+                If BLN_LIMITED1 = True Then
+                    GET_FCT_QA_PERMISSION_LEVEL = "Limited1"
+                Else
+                    If BLN_READ = True Then
+                        GET_FCT_QA_PERMISSION_LEVEL = "Read"
+                    End If
+                End If
+            End If
+        End If
+    End With
+        Else
+            GET_FCT_QA_PERMISSION_LEVEL = "No"
+        End If
+    RST_QA.Close
+    Set RST_QA = Nothing
+End Function
+Function GET_PROD_ACCESS_LEVEL(ByRef STR_CDSID As String) As String
+    Dim BLN_YES As Boolean
+    Dim BLN_LIMITED As Boolean
+    Dim BLN_LIMITED1 As Boolean
+    Dim BLN_READ As Boolean
+    Dim BLN_NO As Boolean
+    Dim RST_ORACLE_CDSID_ROLE_REGISTERED_USERS As Recordset
+    Dim STR_ROLE_FIELD_VALUE As String
+    
+    BLN_YES = False
+    BLN_LIMITED = False
+    BLN_LIMITED1 = False
+    BLN_READ = False
+    BLN_NO = False
+    Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = CurrentDb.OpenRecordset("select role from ORACLE_CDSID_ROLE_REGISTERED_USERS where cdsid = " & Chr(34) & STR_CDSID & Chr(34))
+    If RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.RecordCount > 0 Then
+        With RST_ORACLE_CDSID_ROLE_REGISTERED_USERS
+            While Not .EOF
+                STR_ROLE_FIELD_VALUE = RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Fields(0).Value
+                If STR_ROLE_FIELD_VALUE = "D&R ENGINEER" Then
+                    BLN_LIMITED1 = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "VIEWER" Or STR_ROLE_FIELD_VALUE = "EXTERNAL VIEWER" Then
+                    BLN_READ = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "BUSINESS PROD SUPPORT" _
+                Or STR_ROLE_FIELD_VALUE = "CAD AUTHOR" _
+                Or STR_ROLE_FIELD_VALUE = "DATA ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "ENGINEER CENTRAL TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "PMT LEADER" _
+                Then
+                    BLN_YES = True
+                End If
+                If STR_ROLE_FIELD_VALUE = "BUYER" _
+                Or STR_ROLE_FIELD_VALUE = "CHANGE ANALYST TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "INFORMATION STANDARDS TEAM" _
+                Or STR_ROLE_FIELD_VALUE = "JV BOM ADMIN" _
+                Or STR_ROLE_FIELD_VALUE = "JV ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "JV FINANCE ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "JV PMT LEADER" _
+                Or STR_ROLE_FIELD_VALUE = "JV PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PPM ANALYST" _
+                Or STR_ROLE_FIELD_VALUE = "PROD SUPPORT (IT)" _
+                Or STR_ROLE_FIELD_VALUE = "PROGRAM MANAGEMENT" _
+                Or STR_ROLE_FIELD_VALUE = "SUPPLIER ENGINEER" _
+                Or STR_ROLE_FIELD_VALUE = "WERS REFRESH ADMIN" _
+                Then
+                    BLN_LIMITED = True
+                End If
+                .MoveNext
+            Wend
+            If BLN_YES = True Then
+                GET_PROD_ACCESS_LEVEL = "Yes"
+            Else
+                If BLN_LIMITED = True Then
+                    GET_PROD_ACCESS_LEVEL = "Limited"
+                Else
+                    If BLN_LIMITED1 = True Then
+                        GET_PROD_ACCESS_LEVEL = "Limited1"
+                    Else
+                        If BLN_READ = True Then
+                            GET_PROD_ACCESS_LEVEL = "Read"
+                        End If
+                    End If
+                End If
+            End If
+        End With
+    Else
+        GET_PROD_ACCESS_LEVEL = "No"
+    End If
+    RST_ORACLE_CDSID_ROLE_REGISTERED_USERS.Close
+    Set RST_ORACLE_CDSID_ROLE_REGISTERED_USERS = Nothing
+
+End Function
+Function GET_OWNER_CONFLICT(ByRef STR_CDSID As String) As Boolean
+'Stop
+    Dim STR_SQL As String
+    Dim BLN_DR_ENGINEER As Boolean
+    Dim BLN_Business_PROD_Support As Boolean
+    Dim RST_DEVELOPERS_BY_ROLE_ENV As Recordset
+    Dim RST_D4S2_CDSID_ROLE_IN_DEV_FROM_KULDEEP As Recordset
+    Dim RST_ACCUREV As Recordset
+    Set RST_ACCUREV = CurrentDb.OpenRecordset("SELECT ROLE FROM ACCUREV WHERE CDSID = " & Chr(34) & STR_CDSID & Chr(34))
+    If RST_ACCUREV.RecordCount > 1 Then
+            GET_OWNER_CONFLICT = True
+    Else
+            GET_OWNER_CONFLICT = False
+    End If
+End Function
+Function GET_FCT_THE_OWNER_CAN_PROMOTE_CODE(ByRef STR_CDSID As String) As Boolean
+    Dim RST_ACCUREV_CODE_PROMOTERS As Recordset
+    Set RST_ACCUREV_CODE_PROMOTERS = CurrentDb.OpenRecordset("SELECT CDSID FROM ACCUREV_CODE_PROMOTERS WHERE CDSID = " & Chr(34) & STR_CDSID & Chr(34))
+    If RST_ACCUREV_CODE_PROMOTERS.RecordCount > 0 Then
+        GET_FCT_THE_OWNER_CAN_PROMOTE_CODE = True
+    Else
+        GET_FCT_THE_OWNER_CAN_PROMOTE_CODE = False
+    End If
+End Function
