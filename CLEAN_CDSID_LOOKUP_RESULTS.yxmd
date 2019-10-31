@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="20">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="18" y="29.99998" width="478.9835" height="190" />
+        <Position x="18" y="29.99998" width="575" height="191" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -21,7 +21,7 @@
       <ChildNodes>
         <Node ToolID="18">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-            <Position x="43" y="73.99998" />
+            <Position x="43.00001" y="73.99998" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -90,11 +90,40 @@ Table=`IT Team$`</DefaultAnnotationText>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
         </Node>
+        <Node ToolID="25">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="462" y="90" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\PROJECTS\GitHub\SOD\SOD_v15\OUTPUTS\CDSID_REMOVED_FROM_FEDEBOM_MASTER.csv</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>CDSID_REMOVED_FROM_FEDEBOM_MASTER.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
       </ChildNodes>
     </Node>
     <Node ToolID="16">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="17.99998" y="245.9999" width="1222" height="607.0001" />
+        <Position x="17.99998" y="245.9999" width="1222" height="655.0001" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -165,7 +194,7 @@ Table=`CDS List$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="2">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="175" y="373.9998" />
+            <Position x="175" y="373.9999" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -198,7 +227,7 @@ Table=`CDS List$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="3">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="307.0001" y="289.9999" />
+            <Position x="307.0001" y="290" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -241,7 +270,7 @@ Table=`CDS List$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="5">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="559" y="290" />
+            <Position x="559" y="289.9999" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -291,7 +320,7 @@ Table=`CDS List$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="7">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="307.0001" y="530.0002" />
+            <Position x="307.0001" y="578.0002" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -317,7 +346,7 @@ Table=`CDS List$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="8">
           <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
-            <Position x="427" y="530.0001" />
+            <Position x="427" y="578.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -338,7 +367,7 @@ Table=`CDS List$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="9">
           <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
-            <Position x="306" y="666" />
+            <Position x="306" y="714" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -359,7 +388,7 @@ Table=`CDS List$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="10">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="427.0001" y="661.9999" />
+            <Position x="427" y="709.9999" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -379,7 +408,7 @@ SOD_TEAM_MEMBER = [Name21] + " " + ...</DefaultAnnotationText>
         </Node>
         <Node ToolID="11">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="571" y="662" />
+            <Position x="571" y="710" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -578,7 +607,7 @@ Table=`IT Team$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="17">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="149" y="894" width="279.8341" height="206" />
+        <Position x="150" y="930" width="406" height="206" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -596,7 +625,7 @@ Table=`IT Team$`</DefaultAnnotationText>
       <ChildNodes>
         <Node ToolID="14">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-            <Position x="174" y="954" />
+            <Position x="175" y="990" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -637,7 +666,7 @@ Table=`IT Team$`</DefaultAnnotationText>
         </Node>
         <Node ToolID="15">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-            <Position x="307" y="938" />
+            <Position x="308" y="974" />
           </GuiSettings>
           <Properties>
             <Configuration joinByRecordPos="False">
@@ -665,6 +694,35 @@ Table=`IT Team$`</DefaultAnnotationText>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
         </Node>
+        <Node ToolID="26">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="426" y="978" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\PROJECTS\GitHub\SOD\SOD_v15\OUTPUTS\NEW_CDSIDs_TO_BE_RESEARCHED.csv</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>NEW_CDSIDs_TO_BE_RESEARCHED.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
       </ChildNodes>
     </Node>
   </Nodes>
@@ -676,6 +734,10 @@ Table=`IT Team$`</DefaultAnnotationText>
     <Connection>
       <Origin ToolID="2" Connection="True" />
       <Destination ToolID="19" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Join" />
+      <Destination ToolID="25" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="1" Connection="Output" />
@@ -752,6 +814,10 @@ Table=`IT Team$`</DefaultAnnotationText>
     <Connection>
       <Origin ToolID="24" Connection="Output" />
       <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="Join" />
+      <Destination ToolID="26" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
