@@ -1,0 +1,1240 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2018.3">
+  <Nodes>
+    <Node ToolID="26">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="294" y="1338" width="741" height="299" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>6N are the Conflicts between the Code Promoters and the FEDEBOM Prod UI Access</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="25">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="906" y="1382" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\WIP\6N.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>RemoveFile</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>6N.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="28">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="534" y="1382" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="35">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="319" y="1402" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>FEDEBOM IT Personnel 17Sep Master.xlsx
+Table=`IT Team$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="CDSID" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="FEDEBOM IT Team Member" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="TEAM_ROLE" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_TEAM_MEMBER" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_ROLE" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_TEAM_MENBER" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Control" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Quality Assurance Data" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Production Source Code Libraries" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Control Access to systems / Data" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="MANAGER" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="42">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="642" y="1382" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="&quot;N&quot;" field="Conflict" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Conflict = "N"
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="43">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="786" y="1382" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="True" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="CDSID" selected="False" />
+                <SelectField field="Right_CDSID" selected="False" />
+                <SelectField field="FEDEBOM IT Team Member" selected="False" />
+                <SelectField field="TEAM_ROLE" selected="False" />
+                <SelectField field="SOD_TEAM_MEMBER" selected="True" />
+                <SelectField field="SOD_ROLE" selected="True" />
+                <SelectField field="SOD_TEAM_MENBER" selected="False" />
+                <SelectField field="Conflict" selected="True" />
+                <SelectField field="Access Control" selected="True" />
+                <SelectField field="Access Quality Assurance Data" selected="True" />
+                <SelectField field="Access Production Source Code Libraries" selected="True" />
+                <SelectField field="Control Access to systems / Data" selected="True" />
+                <SelectField field="ROLE" selected="False" />
+                <SelectField field="MANAGER" selected="True" />
+                <SelectField field="CDSID2" selected="False" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="49">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="906" y="1506" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>Append</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>ALL_CONFLICTS.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="23">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="55" y="938" width="1100" height="346" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>6K are the Conflicts between the Code Promoters and the Schedulers</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="18">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="413.0001" y="1010" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="221.0002" y="1082" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="FIRST_NAME" />
+                <Field field="LAST_NAME" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="FIRST_NAME" />
+                <Field field="LAST_NAME" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="21">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1026" y="1002" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\WIP\6K.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>RemoveFile</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>6K.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="22">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="546" y="1014" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[ROLE] = "USWF-5091-FEDE-BOMPROD"</Expression>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Operator>=</Operator>
+                <Field>ROLE</Field>
+                <Operands>
+                  <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+                  <DateType>fixed</DateType>
+                  <PeriodDate>2019-10-16 13:24:33</PeriodDate>
+                  <PeriodType>
+                  </PeriodType>
+                  <PeriodCount>0</PeriodCount>
+                  <Operand>USWF-5091-FEDE-BOMPROD</Operand>
+                  <StartDate>2019-10-16 13:24:33</StartDate>
+                  <EndDate>2019-10-16 13:24:33</EndDate>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[ROLE] = "USWF-5091-FEDE-BOMPROD"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="33">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="104" y="982" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS.xlsx|||`Sheet1$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>SCHEDULERS.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="ENVIRONMENT" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="FIRST_NAME" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="LAST_NAME" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="MI" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="ROLE" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS.xlsx|||`Sheet1$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="34">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="80" y="1138" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS_WITH_MAPPED_CDSID.xlsx|||`Sheet1$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>SCHEDULERS_WITH_MAPPED_CDSID.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="FIRST_NAME" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS_WITH_MAPPED_CDSID.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="LAST_NAME" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS_WITH_MAPPED_CDSID.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="MI" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS_WITH_MAPPED_CDSID.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="CDSID" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS_WITH_MAPPED_CDSID.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="MANAGER" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\SCHEDULERS_WITH_MAPPED_CDSID.xlsx|||`Sheet1$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="40">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="798" y="1002" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="&quot;K&quot;" field="Conflict" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Conflict = "K"
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="41">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="918" y="1002" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="True" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="CDSID" selected="False" />
+                <SelectField field="Right_CDSID" selected="False" />
+                <SelectField field="FEDEBOM IT Team Member" selected="False" />
+                <SelectField field="TEAM_ROLE" selected="False" />
+                <SelectField field="SOD_TEAM_MEMBER" selected="True" />
+                <SelectField field="SOD_ROLE" selected="True" />
+                <SelectField field="SOD_TEAM_MENBER" selected="False" />
+                <SelectField field="Conflict" selected="True" />
+                <SelectField field="Access Control" selected="True" />
+                <SelectField field="Access Quality Assurance Data" selected="True" />
+                <SelectField field="Access Production Source Code Libraries" selected="True" />
+                <SelectField field="Control Access to systems / Data" selected="True" />
+                <SelectField field="ROLE" selected="False" />
+                <SelectField field="ENVIRONMENT" selected="False" />
+                <SelectField field="FIRST_NAME" selected="False" />
+                <SelectField field="LAST_NAME" selected="False" />
+                <SelectField field="MI" selected="False" />
+                <SelectField field="Right_FIRST_NAME" selected="False" />
+                <SelectField field="Right_LAST_NAME" selected="False" />
+                <SelectField field="Right_MI" selected="False" />
+                <SelectField field="MANAGER" selected="True" />
+                <SelectField field="Right_Right_CDSID" selected="False" />
+                <SelectField field="Right_MANAGER" selected="False" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="45">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="678" y="990" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="48">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1026" y="1122" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>Append</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>ALL_CONFLICTS.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="598" width="1005" height="303" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>6I are the Conflicts between the Code Promoters and Security Admin</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="12">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="237.0001" y="666" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="14">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="330" y="666" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[ROLE] = "BUSINESS PROD SUPPORT"</Expression>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Operator>=</Operator>
+                <Field>ROLE</Field>
+                <Operands>
+                  <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+                  <DateType>fixed</DateType>
+                  <PeriodDate>2019-10-16 13:03:08</PeriodDate>
+                  <PeriodType>
+                  </PeriodType>
+                  <PeriodCount>0</PeriodCount>
+                  <Operand>BUSINESS PROD SUPPORT</Operand>
+                  <StartDate>2019-10-16 13:03:08</StartDate>
+                  <EndDate>2019-10-16 13:03:08</EndDate>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[ROLE] = "BUSINESS PROD SUPPORT"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="15">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="930" y="653.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\WIP\6I.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>RemoveFile</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>6I.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="32">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79" y="769.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\ORACLE_CDSID_ROLE.xlsx|||`Sheet1$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>ORACLE_CDSID_ROLE.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="CDSID" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\ORACLE_CDSID_ROLE.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="ROLE" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\ORACLE_CDSID_ROLE.xlsx|||`Sheet1$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="38">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="678" y="653.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="&quot;I&quot;" field="Conflict" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Conflict = "I"
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="39">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="810" y="653.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="True" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="CDSID" selected="False" />
+                <SelectField field="Right_CDSID" selected="False" />
+                <SelectField field="FEDEBOM IT Team Member" selected="False" />
+                <SelectField field="TEAM_ROLE" selected="False" />
+                <SelectField field="SOD_TEAM_MEMBER" selected="True" />
+                <SelectField field="SOD_ROLE" selected="True" />
+                <SelectField field="SOD_TEAM_MENBER" selected="False" />
+                <SelectField field="Conflict" selected="True" />
+                <SelectField field="Access Control" selected="True" />
+                <SelectField field="Access Quality Assurance Data" selected="True" />
+                <SelectField field="Access Production Source Code Libraries" selected="True" />
+                <SelectField field="Control Access to systems / Data" selected="True" />
+                <SelectField field="ROLE" selected="False" />
+                <SelectField field="MANAGER" selected="True" />
+                <SelectField field="Right_Right_CDSID" selected="False" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="44">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="474" y="642" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="47">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="930" y="762" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>Append</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>ALL_CONFLICTS.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="54" width="1077" height="502" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>6G are the Conflicts between the Code Promoters and QA</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="260.0001" y="154.0001" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="5">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="392.0001" y="286.0001" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="7">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="524.0001" y="286" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="CDSID" selected="True" />
+                <SelectField field="SOD_TEAM_MEMBER" selected="True" />
+                <SelectField field="SOD_ROLE" selected="True" />
+                <SelectField field="Access Control" selected="True" />
+                <SelectField field="Access Quality Assurance Data" selected="True" />
+                <SelectField field="Access Production Source Code Libraries" selected="True" />
+                <SelectField field="Control Access to systems / Data" selected="True" />
+                <SelectField field="MANAGER" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1014" y="269.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\WIP\6G.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>RemoveFile</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>6G.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="9">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="642" y="281.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="CDSID" />
+                <Field field="SOD_TEAM_MEMBER" />
+                <Field field="SOD_ROLE" />
+                <Field field="Access Control" />
+                <Field field="Access Quality Assurance Data" />
+                <Field field="Access Production Source Code Libraries" />
+                <Field field="Control Access to systems / Data" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Unique: CDSID, SOD_TEAM_MEMBER, SOD_ROLE, Access Control, Access Quality Assurance Data, Access Production Source Code Libraries, Control Access to systems / Data</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="29">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79.00007" y="98" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\ACCUREV_LEADS.xlsx|||`Sheet1$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>ACCUREV_LEADS.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="CDSID" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\ACCUREV_LEADS.xlsx|||`Sheet1$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="30">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79.00004" y="253.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\I6S2.xlsx|||`I6S1$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>I6S2.xlsx
+Table=`I6S1$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="CDSID" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\I6S2.xlsx|||`I6S1$`" type="V_String" />
+                <Field name="ROLE" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\I6S2.xlsx|||`I6S1$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="31">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="91.00003" y="410" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>FEDEBOM IT Personnel 17Sep Master.xlsx
+Table=`IT Team$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="CDSID" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="FEDEBOM IT Team Member" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="TEAM_ROLE" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_TEAM_MEMBER" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_ROLE" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_TEAM_MENBER" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Control" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Quality Assurance Data" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Production Source Code Libraries" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Control Access to systems / Data" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="MANAGER" size="255" source="File: \\it1.spt.ford.com@SSL\DavWWWRoot\sites\FEDEBOM\Application Documentation\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="36">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="774" y="269.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="&quot;G&quot;" field="Conflict" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Conflict = "G"
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="37">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="894" y="269.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="True" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="CDSID" selected="False" />
+                <SelectField field="SOD_TEAM_MEMBER" selected="True" />
+                <SelectField field="SOD_ROLE" selected="True" />
+                <SelectField field="Conflict" selected="True" />
+                <SelectField field="Access Control" selected="True" />
+                <SelectField field="Access Quality Assurance Data" selected="True" />
+                <SelectField field="Access Production Source Code Libraries" selected="True" />
+                <SelectField field="Control Access to systems / Data" selected="True" />
+                <SelectField field="MANAGER" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="46">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1002" y="102" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>Append</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>ALL_CONFLICTS.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="28" Connection="Join" />
+      <Destination ToolID="42" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="35" Connection="Output" />
+      <Destination ToolID="28" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="12" Connection="Join" />
+      <Destination ToolID="28" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="42" Connection="Output" />
+      <Destination ToolID="43" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="43" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="43" Connection="Output" />
+      <Destination ToolID="49" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Join" />
+      <Destination ToolID="22" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="20" Connection="Join" />
+      <Destination ToolID="18" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="18" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="22" Connection="True" />
+      <Destination ToolID="45" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="31" Connection="Output" />
+      <Destination ToolID="45" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="33" Connection="Output" />
+      <Destination ToolID="20" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="34" Connection="Output" />
+      <Destination ToolID="20" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="40" Connection="Output" />
+      <Destination ToolID="41" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="41" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="41" Connection="Output" />
+      <Destination ToolID="48" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="45" Connection="Join" />
+      <Destination ToolID="40" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="12" Connection="Join" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="True" />
+      <Destination ToolID="44" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="31" Connection="Output" />
+      <Destination ToolID="44" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="32" Connection="Output" />
+      <Destination ToolID="12" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="12" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="38" Connection="Output" />
+      <Destination ToolID="39" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="39" Connection="Output" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="39" Connection="Output" />
+      <Destination ToolID="47" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="44" Connection="Join" />
+      <Destination ToolID="38" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Join" />
+      <Destination ToolID="5" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="31" Connection="Output" />
+      <Destination ToolID="5" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Join" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Unique" />
+      <Destination ToolID="36" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="3" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="30" Connection="Output" />
+      <Destination ToolID="3" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="36" Connection="Output" />
+      <Destination ToolID="37" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="37" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="37" Connection="Output" />
+      <Destination ToolID="46" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Code Promoters Research</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
