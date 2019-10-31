@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2018.3">
+  <Nodes>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="77" y="34.00001" width="994" height="458" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>7D QA with SE</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="1">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="102" y="78.00002" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>FEDEBOM IT Personnel 17Sep Master.xlsx
+Table=`IT Team$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="CDSID" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="FEDEBOM IT Team Member" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="TEAM_ROLE" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_TEAM_MEMBER" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="SOD_ROLE" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Control" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Quality Assurance Data" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Access Production Source Code Libraries" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Use Database Management Utilities" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="Control Access to systems / Data" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="MANAGER" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+                <Field name="TEAM" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="2">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="258" y="78.00008" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[SOD_ROLE] = "QA Control"</Expression>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Operator>=</Operator>
+                <Field>SOD_ROLE</Field>
+                <Operands>
+                  <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+                  <DateType>fixed</DateType>
+                  <PeriodDate>2019-10-23 12:55:23</PeriodDate>
+                  <PeriodType>
+                  </PeriodType>
+                  <PeriodCount>0</PeriodCount>
+                  <StartDate>2019-10-23 12:55:23</StartDate>
+                  <EndDate>2019-10-23 12:55:23</EndDate>
+                  <Operand>QA Control</Operand>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[SOD_ROLE] = "QA Control"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="270" y="221.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\PROJECTS\DATA\SOD\INPUTS\D4S2.xlsx|||`Sheet1$`</File>
+              <FormatSpecificOptions>
+                <FirstRowData>False</FirstRowData>
+                <ImportLine>1</ImportLine>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>D4S2.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="CDSID" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\D4S2.xlsx|||`Sheet1$`" type="V_String" />
+                <Field name="ROLE" size="255" source="File: C:\PROJECTS\DATA\SOD\INPUTS\D4S2.xlsx|||`Sheet1$`" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="4">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="438.0001" y="150" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="CDSID" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="5">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="570" y="150" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="&quot;D&quot;" field="Conflict Col" size="1073741823" type="V_WString" />
+                <FormulaField expression="&quot;07&quot;" field="Conflict Row" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Conflict Col = "D"
+Conflict Row = "07"
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="6">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="690" y="150" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="True" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="CDSID" selected="False" />
+                <SelectField field="Right_CDSID" selected="False" />
+                <SelectField field="FEDEBOM IT Team Member" selected="False" />
+                <SelectField field="TEAM_ROLE" selected="False" />
+                <SelectField field="SOD_TEAM_MEMBER" selected="True" />
+                <SelectField field="SOD_ROLE" selected="True" />
+                <SelectField field="SOD_TEAM_MENBER" selected="False" />
+                <SelectField field="Conflict" selected="False" />
+                <SelectField field="Access Control" selected="True" />
+                <SelectField field="Access Quality Assurance Data" selected="True" />
+                <SelectField field="Access Production Source Code Libraries" selected="True" />
+                <SelectField field="Control Access to systems / Data" selected="True" />
+                <SelectField field="ROLE" selected="False" />
+                <SelectField field="CDSID2" selected="False" />
+                <SelectField field="MANAGER" selected="True" />
+                <SelectField field="TEAM" selected="False" />
+                <SelectField field="Use Database Management Utilities" selected="True" />
+                <SelectField field="Conflict Col" selected="True" />
+                <SelectField field="Conflict Row" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="7">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="798" y="150" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="SOD_TEAM_MEMBER" />
+                <Field field="SOD_ROLE" />
+                <Field field="Access Control" />
+                <Field field="Access Quality Assurance Data" />
+                <Field field="Access Production Source Code Libraries" />
+                <Field field="Control Access to systems / Data" />
+                <Field field="MANAGER" />
+                <Field field="Use Database Management Utilities" />
+                <Field field="Conflict Col" />
+                <Field field="Conflict Row" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Unique: SOD_TEAM_MEMBER, SOD_ROLE, Access Control, Access Quality Assurance Data, Access Production Source Code Libraries, Control Access to systems / Data, MANAGER, Use Database Management Utilities, Conflict Col, Conflict Row</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="942" y="78.00001" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="25" MaxRecords="">C:\PROJECTS\DATA\SOD\CONFLICTS\ALL_CONFLICTS.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <OutputOption>Append</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>ALL_CONFLICTS.xlsx
+Table=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="9">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="942" y="282" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\PROJECTS\DATA\SOD\WIP\14F.csv</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>14F.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="True" />
+      <Destination ToolID="4" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Join" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Unique" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Unique" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>QA with SE</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
