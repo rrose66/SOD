@@ -1,0 +1,1276 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2018.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="114" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="56">C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>3</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSLookup_QlikViewProd.xlsm
+Table=`CDS List$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Name" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Email Address" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Phone Number" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Emp Type" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Role" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division " size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Country" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Company" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Title" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Department" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Organization" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Domain" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Sponser" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Email" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="F20" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F21" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F22" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F23" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F24" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F25" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F26" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F27" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookup_QlikViewProd.xlsm|||`CDS List$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="114" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="56">C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>3</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSLookupAccuRev.xlsm
+Table=`CDS List$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Name" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Email Address" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Phone Number" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Emp Type" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Role" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division " size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Country" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Company" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Title" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Department" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Organization" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Domain" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Sponser" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Email" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="F20" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F21" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F22" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F23" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F24" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F25" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F26" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F27" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupAccuRev.xlsm|||`CDS List$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="126" y="438" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="56">C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>3</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSLookupProd.xlsm
+Table=`CDS List$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Name" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Email Address" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Phone Number" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Emp Type" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Manager Role" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Division " source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Division Abr" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Country" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Company" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Building" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Building Abr" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Title" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Department" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Organization" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Domain" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Sponser" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Manager" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Manager Email" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F20" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F21" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F22" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F23" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F24" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F25" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F26" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F27" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupProd.xlsm|||`CDS List$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="126" y="618" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="56">C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>3</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSLookupQA.xlsm
+Table=`CDS List$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Name" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Email Address" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Phone Number" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Emp Type" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Role" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division " size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Country" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Company" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Title" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Department" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Organization" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Domain" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Sponser" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Email" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="F20" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F21" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F22" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F23" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F24" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F25" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F26" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F27" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQA.xlsm|||`CDS List$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="126" y="798" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="56">C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>3</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSLookupQlikQA.xlsm
+Table=`CDS List$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Name" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Email Address" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Phone Number" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Emp Type" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Role" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division " size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Country" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Company" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Title" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Department" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Organization" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Domain" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Sponser" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Email" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="F20" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F21" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F22" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F23" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F24" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F25" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F26" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F27" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupQlikQA.xlsm|||`CDS List$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="126" y="990" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="56">C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>3</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSLookupSchedulers.xlsm
+Table=`CDS List$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Name" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Email Address" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Phone Number" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Emp Type" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Role" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division " size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Country" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Company" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building Abr" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Title" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Department" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Organization" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Domain" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Sponser" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="Manager" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Email" size="255" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="F20" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F21" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F22" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F23" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F24" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F25" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F26" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F27" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\WIP\CDSLookupSchedulers.xlsm|||`CDS List$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="270" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;QlikViewProd&quot;" field="Source" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Source = "QlikViewProd"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="282" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;AccuRev&quot;" field="Source" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Source = "AccuRev"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="282" y="438" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;Prod&quot;" field="Source" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Source = "Prod"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="270" y="618" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;QA&quot;" field="Source" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Source = "QA"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="270" y="798" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;QlikViewQA&quot;" field="Source" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Source = "QlikViewQA"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="270" y="990" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;Scheduler&quot;" field="Source" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Source = "Scheduler"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="414" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>IsNull([Name])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNull</Operator>
+            <Field>Name</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-31 14:17:43</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-31 14:17:43</StartDate>
+              <EndDate>2019-10-31 14:17:43</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>IsNull([Name])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="426" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>IsNull([Name])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNull</Operator>
+            <Field>Name</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-31 14:17:43</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-31 14:17:43</StartDate>
+              <EndDate>2019-10-31 14:17:43</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>IsNull([Name])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="438" y="438" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>IsNull([Name])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNull</Operator>
+            <Field>Name</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-31 14:17:43</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-31 14:17:43</StartDate>
+              <EndDate>2019-10-31 14:17:43</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>IsNull([Name])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="426" y="618" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>IsNull([Name])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNull</Operator>
+            <Field>Name</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-31 14:17:43</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-31 14:17:43</StartDate>
+              <EndDate>2019-10-31 14:17:43</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>IsNull([Name])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="426" y="798" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>IsNull([Name])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNull</Operator>
+            <Field>Name</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-31 14:17:43</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-31 14:17:43</StartDate>
+              <EndDate>2019-10-31 14:17:43</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>IsNull([Name])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="414" y="990" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>IsNull([Name])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNull</Operator>
+            <Field>Name</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-31 14:17:43</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-31 14:17:43</StartDate>
+              <EndDate>2019-10-31 14:17:43</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>IsNull([Name])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="582" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Source" selected="True" />
+            <SelectField field="Name" selected="False" />
+            <SelectField field="Email Address" selected="False" />
+            <SelectField field="Phone Number" selected="False" />
+            <SelectField field="Emp Type" selected="False" />
+            <SelectField field="Manager Role" selected="False" />
+            <SelectField field="Division " selected="False" />
+            <SelectField field="Division Abr" selected="False" />
+            <SelectField field="Country" selected="False" />
+            <SelectField field="Company" selected="False" />
+            <SelectField field="Building" selected="False" />
+            <SelectField field="Building Abr" selected="False" />
+            <SelectField field="Title" selected="False" />
+            <SelectField field="Department" selected="False" />
+            <SelectField field="Organization" selected="False" />
+            <SelectField field="Domain" selected="False" />
+            <SelectField field="Sponser" selected="False" />
+            <SelectField field="Manager" selected="False" />
+            <SelectField field="Manager Email" selected="False" />
+            <SelectField field="F20" selected="False" />
+            <SelectField field="F21" selected="False" />
+            <SelectField field="F22" selected="False" />
+            <SelectField field="F23" selected="False" />
+            <SelectField field="F24" selected="False" />
+            <SelectField field="F25" selected="False" />
+            <SelectField field="F26" selected="False" />
+            <SelectField field="F27" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="570" y="270" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Source" selected="True" />
+            <SelectField field="Name" selected="False" />
+            <SelectField field="Email Address" selected="False" />
+            <SelectField field="Phone Number" selected="False" />
+            <SelectField field="Emp Type" selected="False" />
+            <SelectField field="Manager Role" selected="False" />
+            <SelectField field="Division " selected="False" />
+            <SelectField field="Division Abr" selected="False" />
+            <SelectField field="Country" selected="False" />
+            <SelectField field="Company" selected="False" />
+            <SelectField field="Building" selected="False" />
+            <SelectField field="Building Abr" selected="False" />
+            <SelectField field="Title" selected="False" />
+            <SelectField field="Department" selected="False" />
+            <SelectField field="Organization" selected="False" />
+            <SelectField field="Domain" selected="False" />
+            <SelectField field="Sponser" selected="False" />
+            <SelectField field="Manager" selected="False" />
+            <SelectField field="Manager Email" selected="False" />
+            <SelectField field="F20" selected="False" />
+            <SelectField field="F21" selected="False" />
+            <SelectField field="F22" selected="False" />
+            <SelectField field="F23" selected="False" />
+            <SelectField field="F24" selected="False" />
+            <SelectField field="F25" selected="False" />
+            <SelectField field="F26" selected="False" />
+            <SelectField field="F27" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="582" y="450" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Source" selected="True" />
+            <SelectField field="Name" selected="False" />
+            <SelectField field="Email Address" selected="False" />
+            <SelectField field="Phone Number" selected="False" />
+            <SelectField field="Emp Type" selected="False" />
+            <SelectField field="Manager Role" selected="False" />
+            <SelectField field="Division " selected="False" />
+            <SelectField field="Division Abr" selected="False" />
+            <SelectField field="Country" selected="False" />
+            <SelectField field="Company" selected="False" />
+            <SelectField field="Building" selected="False" />
+            <SelectField field="Building Abr" selected="False" />
+            <SelectField field="Title" selected="False" />
+            <SelectField field="Department" selected="False" />
+            <SelectField field="Organization" selected="False" />
+            <SelectField field="Domain" selected="False" />
+            <SelectField field="Sponser" selected="False" />
+            <SelectField field="Manager" selected="False" />
+            <SelectField field="Manager Email" selected="False" />
+            <SelectField field="F20" selected="False" />
+            <SelectField field="F21" selected="False" />
+            <SelectField field="F22" selected="False" />
+            <SelectField field="F23" selected="False" />
+            <SelectField field="F24" selected="False" />
+            <SelectField field="F25" selected="False" />
+            <SelectField field="F26" selected="False" />
+            <SelectField field="F27" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="22">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="582" y="630" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Source" selected="True" />
+            <SelectField field="Name" selected="False" />
+            <SelectField field="Email Address" selected="False" />
+            <SelectField field="Phone Number" selected="False" />
+            <SelectField field="Emp Type" selected="False" />
+            <SelectField field="Manager Role" selected="False" />
+            <SelectField field="Division " selected="False" />
+            <SelectField field="Division Abr" selected="False" />
+            <SelectField field="Country" selected="False" />
+            <SelectField field="Company" selected="False" />
+            <SelectField field="Building" selected="False" />
+            <SelectField field="Building Abr" selected="False" />
+            <SelectField field="Title" selected="False" />
+            <SelectField field="Department" selected="False" />
+            <SelectField field="Organization" selected="False" />
+            <SelectField field="Domain" selected="False" />
+            <SelectField field="Sponser" selected="False" />
+            <SelectField field="Manager" selected="False" />
+            <SelectField field="Manager Email" selected="False" />
+            <SelectField field="F20" selected="False" />
+            <SelectField field="F21" selected="False" />
+            <SelectField field="F22" selected="False" />
+            <SelectField field="F23" selected="False" />
+            <SelectField field="F24" selected="False" />
+            <SelectField field="F25" selected="False" />
+            <SelectField field="F26" selected="False" />
+            <SelectField field="F27" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="23">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="582" y="810" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Source" selected="True" />
+            <SelectField field="Name" selected="False" />
+            <SelectField field="Email Address" selected="False" />
+            <SelectField field="Phone Number" selected="False" />
+            <SelectField field="Emp Type" selected="False" />
+            <SelectField field="Manager Role" selected="False" />
+            <SelectField field="Division " selected="False" />
+            <SelectField field="Division Abr" selected="False" />
+            <SelectField field="Country" selected="False" />
+            <SelectField field="Company" selected="False" />
+            <SelectField field="Building" selected="False" />
+            <SelectField field="Building Abr" selected="False" />
+            <SelectField field="Title" selected="False" />
+            <SelectField field="Department" selected="False" />
+            <SelectField field="Organization" selected="False" />
+            <SelectField field="Domain" selected="False" />
+            <SelectField field="Sponser" selected="False" />
+            <SelectField field="Manager" selected="False" />
+            <SelectField field="Manager Email" selected="False" />
+            <SelectField field="F20" selected="False" />
+            <SelectField field="F21" selected="False" />
+            <SelectField field="F22" selected="False" />
+            <SelectField field="F23" selected="False" />
+            <SelectField field="F24" selected="False" />
+            <SelectField field="F25" selected="False" />
+            <SelectField field="F26" selected="False" />
+            <SelectField field="F27" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="24">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="570" y="1002" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Source" selected="True" />
+            <SelectField field="Name" selected="False" />
+            <SelectField field="Email Address" selected="False" />
+            <SelectField field="Phone Number" selected="False" />
+            <SelectField field="Emp Type" selected="False" />
+            <SelectField field="Manager Role" selected="False" />
+            <SelectField field="Division " selected="False" />
+            <SelectField field="Division Abr" selected="False" />
+            <SelectField field="Country" selected="False" />
+            <SelectField field="Company" selected="False" />
+            <SelectField field="Building" selected="False" />
+            <SelectField field="Building Abr" selected="False" />
+            <SelectField field="Title" selected="False" />
+            <SelectField field="Department" selected="False" />
+            <SelectField field="Organization" selected="False" />
+            <SelectField field="Domain" selected="False" />
+            <SelectField field="Sponser" selected="False" />
+            <SelectField field="Manager" selected="False" />
+            <SelectField field="Manager Email" selected="False" />
+            <SelectField field="F20" selected="False" />
+            <SelectField field="F21" selected="False" />
+            <SelectField field="F22" selected="False" />
+            <SelectField field="F23" selected="False" />
+            <SelectField field="F24" selected="False" />
+            <SelectField field="F25" selected="False" />
+            <SelectField field="F26" selected="False" />
+            <SelectField field="F27" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="25">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="822" y="462" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="28">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="1110" y="462" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SortInfo locale="0">
+            <Field field="CDSID" order="Ascending" />
+            <Field field="Source" order="Ascending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSID - Ascending
+Source - Ascending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="29">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="1110" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="CDSID" action="GroupBy" rename="CDSID" />
+            <SummarizeField field="CDSID" action="Count" rename="Count" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="30">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="1254" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SortInfo locale="0">
+            <Field field="Count" order="Descending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Count - Descending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="31">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="978" y="462" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>!IsNull([CDSID])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNotNull</Operator>
+            <Field>CDSID</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-31 14:29:05</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-31 14:29:05</StartDate>
+              <EndDate>2019-10-31 14:29:05</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!IsNull([CDSID])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="35">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+        <Position x="1218" y="462" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupFields>
+            <Field field="CDSID" />
+          </GroupFields>
+          <HeaderField field="Source" />
+          <DataField field="CDSID" />
+          <Methods>
+            <Method method="First" />
+            <Separator>,</Separator>
+            <FieldSize value="2048" />
+          </Methods>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="CrossTab:Group:First:" type="V_String" />
+            <Field name="AccuRev" size="255" source="File: (Multiple Sources)" type="V_String" />
+            <Field name="QA" size="255" source="File: (Multiple Sources)" type="V_String" />
+            <Field name="QlikViewProd" size="255" source="File: (Multiple Sources)" type="V_String" />
+            <Field name="QlikViewQA" size="255" source="File: (Multiple Sources)" type="V_String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="CDSID" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+    </Node>
+    <Node ToolID="36">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1326" y="462" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">C:\PROJECTS\GitHub\SOD\SOD_v15\OUTPUTS\INACTIVE_CDSIDs_BY_SOURCE.CSV</File>
+          <Passwords />
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>28591</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>INACTIVE_CDSIDs_BY_SOURCE.CSV</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="12" Connection="Output" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="True" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="True" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="True" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="True" />
+      <Destination ToolID="22" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="True" />
+      <Destination ToolID="23" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="True" />
+      <Destination ToolID="24" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="20" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="21" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection name="#4">
+      <Origin ToolID="22" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection name="#5">
+      <Origin ToolID="23" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection name="#6">
+      <Origin ToolID="24" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Output" />
+      <Destination ToolID="31" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="28" Connection="Output" />
+      <Destination ToolID="35" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="30" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="31" Connection="True" />
+      <Destination ToolID="28" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="31" Connection="True" />
+      <Destination ToolID="29" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="35" Connection="Output" />
+      <Destination ToolID="36" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>INACTIVE_CDSID_BY_SOURCE</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
