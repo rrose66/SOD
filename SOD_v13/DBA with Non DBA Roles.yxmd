@@ -1,0 +1,567 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2018.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\DBAs.xlsx|||`Export Worksheet$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DBAs.xlsx
+Table=`Export Worksheet$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="GRANTEE" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\DBAs.xlsx|||`Export Worksheet$`" type="V_String" />
+            <Field name="GRANTED_ROLE" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\DBAs.xlsx|||`Export Worksheet$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="198" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="GRANTEE" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+        <Position x="330" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UniqueFields>
+            <Field field="GRANTEE" />
+          </UniqueFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Unique: GRANTEE</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="78" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="56">P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>3</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CDSLookup_DBAs.xlsm
+Table=`CDS List$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Name" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Email Address" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Phone Number" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Emp Type" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Role" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division " size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Division Abr" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Country" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Company" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Building Abr" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Title" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Department" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Organization" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Domain" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Sponser" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="Manager Email" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="V_String" />
+            <Field name="F20" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F21" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F22" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F23" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F24" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F25" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F26" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+            <Field name="F27" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\WIP\CDSLookup_DBAs.xlsm|||`CDS List$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="474" y="318" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Name" selected="True" />
+            <SelectField field="Emp Type" selected="True" />
+            <SelectField field="Title" selected="True" />
+            <SelectField field="Department" selected="True" />
+            <SelectField field="Organization" selected="True" />
+            <SelectField field="Manager" selected="True" />
+            <SelectField field="Manager Email" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="258" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>!IsNull([Name])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNotNull</Operator>
+            <Field>Name</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-22 11:45:57</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-22 11:45:57</StartDate>
+              <EndDate>2019-10-22 11:45:57</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!IsNull([Name])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="474" y="426" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>FEDEBOM IT Personnel 17Sep Master.xlsx
+Table=`IT Team$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="FEDEBOM IT Team Member" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="TEAM_ROLE" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="SOD_TEAM_MEMBER" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="SOD_ROLE" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="SOD_TEAM_MENBER" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="Access Control" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="Access Quality Assurance Data" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="Access Production Source Code Libraries" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="Control Access to systems / Data" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="MANAGER" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+            <Field name="TEAM" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\FEDEBOM IT Personnel 17Sep Master.xlsx|||`IT Team$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="630" y="378" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="654" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\ORACLE_CDSID.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>ORACLE_CDSID.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: P:\Audit Regulatory\Security &amp; Controls\2019\Separation of Duties (SOD)\Archives\MANUALv08\INPUTS\ORACLE_CDSID.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="894" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="774" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="GRANTEE" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1014" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="GRANTEE" selected="True" />
+            <SelectField field="GRANTED_ROLE" selected="True" />
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="Name" selected="True" />
+            <SelectField field="Emp Type" selected="True" />
+            <SelectField field="Title" selected="True" />
+            <SelectField field="Department" selected="True" />
+            <SelectField field="Organization" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+        <Position x="1134" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UniqueFields>
+            <Field field="GRANTEE" />
+            <Field field="GRANTED_ROLE" />
+            <Field field="CDSID" />
+            <Field field="Name" />
+            <Field field="Emp Type" />
+            <Field field="Title" />
+            <Field field="Department" />
+            <Field field="Organization" />
+          </UniqueFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Unique: GRANTEE, GRANTED_ROLE, CDSID, Name, Emp Type, Title, Department, Organization</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="906" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>!IsNull([Title])</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNotNull</Operator>
+            <Field>Title</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-22 12:10:54</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2019-10-22 12:10:54</StartDate>
+              <EndDate>2019-10-22 12:10:54</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!IsNull([Title])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="1254" y="282" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Title] = "Oracle DBA" or [Title] = "Senior Oracle Database Ad" or [Title] = "Oracle schema DBA" or [GRANTEE] = "PRXGIADM"</Expression>
+          <Mode>Custom</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Field>Title</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-10-22 12:11:30</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>Oracle DBA</Operand>
+              <StartDate>2019-10-22 12:11:30</StartDate>
+              <EndDate>2019-10-22 12:11:30</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Title] = "Oracle DBA" or [Title] = "Senior Oracle Database Ad" or [Title] = "Or...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="11" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Left" />
+      <Destination ToolID="11" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="8" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="True" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Left" />
+      <Destination ToolID="10" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="10" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="11" Connection="Join" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Unique" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="True" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>DBA with Non DBA Roles</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
