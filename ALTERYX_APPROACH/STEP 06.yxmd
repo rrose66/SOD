@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2018.3">
+  <Nodes>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="78" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS.txt</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>SCHEDULERS.txt</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="ENVIRONMENT" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS.txt" type="V_String" />
+            <Field name="FIRST_NAME" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS.txt" type="V_String" />
+            <Field name="LAST_NAME" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS.txt" type="V_String" />
+            <Field name="MI" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS.txt" type="V_String" />
+            <Field name="ROLE" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS.txt" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="78" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS_MAPPED_TO_CDSID.txt</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>SCHEDULERS_MAPPED_TO_CDSID.txt</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="FIRST_NAME" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS_MAPPED_TO_CDSID.txt" type="V_String" />
+            <Field name="LAST_NAME" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS_MAPPED_TO_CDSID.txt" type="V_String" />
+            <Field name="MI" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS_MAPPED_TO_CDSID.txt" type="V_String" />
+            <Field name="CDSID" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS_MAPPED_TO_CDSID.txt" type="V_String" />
+            <Field name="MANAGER" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SCHEDULERS_MAPPED_TO_CDSID.txt" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="222" y="210" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="FIRST_NAME" />
+            <Field field="LAST_NAME" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="FIRST_NAME" />
+            <Field field="LAST_NAME" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="378" y="210" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="MANAGER" selected="True" />
+            <SelectField field="ROLE" selected="True" />
+            <SelectField field="ENVIRONMENT" selected="True" />
+            <SelectField field="FIRST_NAME" selected="False" />
+            <SelectField field="LAST_NAME" selected="False" />
+            <SelectField field="MI" selected="False" />
+            <SelectField field="Right_FIRST_NAME" selected="False" />
+            <SelectField field="Right_LAST_NAME" selected="False" />
+            <SelectField field="Right_MI" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="522" y="210" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[ENVIRONMENT] = "USWF-5091-FEDE-BOMPROD"</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Field>ENVIRONMENT</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-09-24 08:44:41</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>USWF-5091-FEDE-BOMPROD</Operand>
+              <StartDate>2019-09-24 08:44:41</StartDate>
+              <EndDate>2019-09-24 08:44:41</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[ENVIRONMENT] = "USWF-5091-FEDE-BOMPROD"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="666" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[CDSID] = "NOT FOUND"</Expression>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Field>CDSID</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-09-24 08:45:43</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <StartDate>2019-09-24 08:45:43</StartDate>
+              <EndDate>2019-09-24 08:45:43</EndDate>
+              <Operand>NOT FOUND</Operand>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[CDSID] = "NOT FOUND"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="822" y="210" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\SOD_SCHEDULERS.csv</File>
+          <Passwords />
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>28591</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>SOD_SCHEDULERS.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="4" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Join" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="True" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="False" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>STEP 06</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

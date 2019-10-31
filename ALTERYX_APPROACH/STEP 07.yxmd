@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2018.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="30" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\FEDEBOM_IT_CDSID_SOD_ROLE_20190917.xlsx|||`FEDEBOM$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>FEDEBOM_IT_CDSID_SOD_ROLE_20190917.xlsx
+Table=`FEDEBOM$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\FEDEBOM_IT_CDSID_SOD_ROLE_20190917.xlsx|||`FEDEBOM$`" type="V_String" />
+            <Field name="Team Role" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\FEDEBOM_IT_CDSID_SOD_ROLE_20190917.xlsx|||`FEDEBOM$`" type="V_String" />
+            <Field name="SOD Role" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\FEDEBOM_IT_CDSID_SOD_ROLE_20190917.xlsx|||`FEDEBOM$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="30" y="30" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>CLEANED_CDSID_LOOKUP_TOOL.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CDSID" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="FIRST_NAME" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="LAST_NAME" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="EMP_TYPE" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="COUNTRY" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="TITLE" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="MANAGER" size="255" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\CLEANED_CDSID_LOOKUP_TOOL.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="234" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="234" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\ACCUREV_CODE_PROMOTERS.csv</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>ACCUREV_CODE_PROMOTERS.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="ACCUREV_CODE_PROMOTER_CDSID" size="254" source="File: C:\PROJECTS\DATA\FEDEBOM\CREDENTIAL_MANAGEMENT\SEGREGATION_OF_DUTIES\ALTERYX_APPROACH\ACCUREV_CODE_PROMOTERS.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="390" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="CDSID" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="ACCUREV_CODE_PROMOTER_CDSID" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="3" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Join" />
+      <Destination ToolID="5" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Right" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>STEP 07</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
