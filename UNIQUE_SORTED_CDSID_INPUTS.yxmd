@@ -53,7 +53,7 @@
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="510" y="54" />
+        <Position x="654" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -79,7 +79,7 @@
     </Node>
     <Node ToolID="4">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
-        <Position x="366" y="54" />
+        <Position x="486" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -95,6 +95,25 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
     </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="354" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="Uppercase([Field_1])" field="Field_1" size="254" type="V_String" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Field_1 = Uppercase([Field_1])
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
   </Nodes>
   <Connections>
     <Connection>
@@ -103,11 +122,15 @@
     </Connection>
     <Connection>
       <Origin ToolID="2" Connection="Unique" />
-      <Destination ToolID="4" Connection="Input" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="4" Connection="Output" />
       <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
