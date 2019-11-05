@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="258" y="246" />
+        <Position x="210" y="210" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -41,28 +41,9 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
     </Node>
-    <Node ToolID="5">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="378" y="258" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <FormulaFields>
-            <FormulaField expression="&quot;20191031&quot;" field="SCANNED" size="8" type="String" />
-          </FormulaFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText><![CDATA[SCANNED = "20191031"
-]]></DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-    </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="486" y="258" />
+        <Position x="510" y="210" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -86,49 +67,9 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
     </Node>
-    <Node ToolID="7">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="150" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Passwords />
-          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv</File>
-          <FormatSpecificOptions>
-            <CodePage>28591</CodePage>
-            <Delimeter>,</Delimeter>
-            <IgnoreErrors>False</IgnoreErrors>
-            <FieldLen>254</FieldLen>
-            <AllowShareWrite>False</AllowShareWrite>
-            <HeaderRow>True</HeaderRow>
-            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
-            <ImportLine>1</ImportLine>
-          </FormatSpecificOptions>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>FEDEBOM_PRODUCTION_USERS.csv</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="PROGRAM" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="CDSID" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="ROLE" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="REQT_STAT" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="APRVR_TYPE_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="APRVL_STAT_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="SCANNED" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="REQT_STAT_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-            <Field name="APRVR_TYP_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.csv" type="V_String" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
-    </Node>
     <Node ToolID="8">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-        <Position x="630" y="150" />
+        <Position x="654" y="150" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -145,258 +86,9 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
     </Node>
-    <Node ToolID="9">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="774" y="150" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File MaxRecords="" FileFormat="0">C:\PROJECTS\DATA\ORACLE\N_FEDEBOM_PRODUCTION_USERS.csv</File>
-          <Passwords />
-          <FormatSpecificOptions>
-            <LineEndStyle>CRLF</LineEndStyle>
-            <Delimeter>,</Delimeter>
-            <ForceQuotes>False</ForceQuotes>
-            <HeaderRow>True</HeaderRow>
-            <CodePage>28591</CodePage>
-            <WriteBOM>True</WriteBOM>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>N_FEDEBOM_PRODUCTION_USERS.csv</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
-    </Node>
-    <Node ToolID="13">
-      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
-        <Position x="774" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <SummarizeFields>
-            <SummarizeField field="SCANNED" action="GroupBy" rename="SCANNED" />
-          </SummarizeFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
-    </Node>
-    <Node ToolID="14">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
-        <Position x="918" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <SortInfo locale="0">
-            <Field field="SCANNED" order="Descending" />
-          </SortInfo>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>SCANNED - Descending</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
-    </Node>
-    <Node ToolID="16">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="66" y="390" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Passwords />
-          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\DATA\ORACLE\CDSID_ROLE_PROGRAM.csv</File>
-          <FormatSpecificOptions>
-            <CodePage>28591</CodePage>
-            <Delimeter>,</Delimeter>
-            <IgnoreErrors>False</IgnoreErrors>
-            <FieldLen>254</FieldLen>
-            <AllowShareWrite>False</AllowShareWrite>
-            <HeaderRow>True</HeaderRow>
-            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
-            <ImportLine>1</ImportLine>
-          </FormatSpecificOptions>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>CDSID_ROLE_PROGRAM.csv</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="PROGRAM" size="254" source="File: C:\PROJECTS\DATA\ORACLE\CDSID_ROLE_PROGRAM.csv" type="V_String" />
-            <Field name="CDSID" size="254" source="File: C:\PROJECTS\DATA\ORACLE\CDSID_ROLE_PROGRAM.csv" type="V_String" />
-            <Field name="ROLE" size="254" source="File: C:\PROJECTS\DATA\ORACLE\CDSID_ROLE_PROGRAM.csv" type="V_String" />
-            <Field name="REQT_STAT_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\CDSID_ROLE_PROGRAM.csv" type="V_String" />
-            <Field name="APRVR_TYP_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\CDSID_ROLE_PROGRAM.csv" type="V_String" />
-            <Field name="APRVL_STAT_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\CDSID_ROLE_PROGRAM.csv" type="V_String" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
-    </Node>
-    <Node ToolID="17">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="222" y="390" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <OrderChanged value="False" />
-          <CommaDecimal value="False" />
-          <SelectFields>
-            <SelectField field="CDSID" selected="True" />
-            <SelectField field="ROLE" selected="True" />
-            <SelectField field="*Unknown" selected="False" />
-          </SelectFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
-    </Node>
-    <Node ToolID="18">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
-        <Position x="366" y="390" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <UniqueFields>
-            <Field field="CDSID" />
-            <Field field="ROLE" />
-          </UniqueFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Unique: CDSID, ROLE</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
-    </Node>
-    <Node ToolID="20">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="210" y="522" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <OrderChanged value="False" />
-          <CommaDecimal value="False" />
-          <SelectFields>
-            <SelectField field="CDSID" selected="True" />
-            <SelectField field="*Unknown" selected="False" />
-          </SelectFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
-    </Node>
-    <Node ToolID="21">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
-        <Position x="354" y="522" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <UniqueFields>
-            <Field field="CDSID" />
-          </UniqueFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Unique: CDSID</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
-    </Node>
-    <Node ToolID="23">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="522" y="510" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File FileFormat="25" MaxRecords="">C:\PROJECTS\GitHub\SOD\SOD_v15\INPUTS\ORACLE_CDSID.xlsx|||Sheet1</File>
-          <Passwords />
-          <FormatSpecificOptions>
-            <OutputOption>RemoveFile</OutputOption>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>ORACLE_CDSID.xlsx
-Table=Sheet1</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
-    </Node>
-    <Node ToolID="24">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="522" y="378" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File FileFormat="25" MaxRecords="">C:\PROJECTS\GitHub\SOD\SOD_v15\INPUTS\ORACLE_CDSID_ROLE.xlsx|||Sheet1</File>
-          <Passwords />
-          <FormatSpecificOptions>
-            <OutputOption>RemoveFile</OutputOption>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>ORACLE_CDSID_ROLE.xlsx
-Table=Sheet1</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
-    </Node>
-    <Node ToolID="25">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="690" y="474" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File MaxRecords="" FileFormat="0">C:\PROJECTS\GitHub\SOD\SOD_v15\CLEAN_SOURCES_OF_TRUTH\ORACLE_CDSID.txt</File>
-          <Passwords />
-          <FormatSpecificOptions>
-            <LineEndStyle>CRLF</LineEndStyle>
-            <Delimeter>,</Delimeter>
-            <ForceQuotes>False</ForceQuotes>
-            <HeaderRow>False</HeaderRow>
-            <CodePage>28591</CodePage>
-            <WriteBOM>True</WriteBOM>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>ORACLE_CDSID.txt</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
-    </Node>
     <Node ToolID="26">
       <GuiSettings>
-        <Position x="258" y="186" />
+        <Position x="210" y="102" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -407,15 +99,12 @@ Table=Sheet1</DefaultAnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="DateTimeNow.yxmc" />
     </Node>
     <Node ToolID="28">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
-        <Position x="342" y="198" />
+        <Position x="354" y="210" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -439,6 +128,161 @@ Table=Sheet1</DefaultAnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
     </Node>
+    <Node ToolID="30">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="786" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="47">C:\PROJECTS\DATA\ORACLE\N_FEDEBOM_PRODUCTION_USERS.qvx</File>
+          <Passwords />
+          <FormatSpecificOptions />
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>N_FEDEBOM_PRODUCTION_USERS.qvx</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="32">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" FileFormat="47" SearchSubDirs="False" RecordLimit="">C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx</File>
+          <FormatSpecificOptions />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>FEDEBOM_PRODUCTION_USERS.qvx</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;PROGRAM&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="PROGRAM" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;CDSID&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="CDSID" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;ROLE&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="ROLE" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;REQT_STAT&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="REQT_STAT" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;APRVR_TYPE_C&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="APRVR_TYPE_C" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;APRVL_STAT_C&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="APRVL_STAT_C" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;SCANNED&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="SCANNED" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;REQT_STAT_C&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="REQT_STAT_C" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+            <Field description="&lt;QvxFieldHeader&gt;&lt;FieldName&gt;APRVR_TYP_C&lt;/FieldName&gt;&lt;Type&gt;QVX_TEXT&lt;/Type&gt;&lt;Extent&gt;QVX_COUNTED&lt;/Extent&gt;&lt;NullRepresentation&gt;QVX_NULL_FLAG_SUPPRESS_DATA&lt;/NullRepresentation&gt;&lt;ByteWidth&gt;4&lt;/ByteWidth&gt;&lt;FieldFormat&gt;&lt;Type&gt;ASCII&lt;/Type&gt;&lt;/FieldFormat&gt;&lt;/QvxFieldHeader&gt;" name="APRVR_TYP_C" size="1073741823" source="File: C:\PROJECTS\DATA\ORACLE\FEDEBOM_PRODUCTION_USERS.qvx" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="33">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="522" y="282" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">C:\PROJECTS\GitHub\SOD\SOD_v15\CLEAN_SOURCES_OF_TRUTH\ORACLE_CDSID.txt</File>
+          <Passwords />
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>False</HeaderRow>
+            <CodePage>28591</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>ORACLE_CDSID.txt</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="34">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="210" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="CDSID" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="35">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+        <Position x="354" y="294" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UniqueFields>
+            <Field field="CDSID" />
+          </UniqueFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Unique: CDSID</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+    </Node>
+    <Node ToolID="36">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="42" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\DATA\ORACLE\REGISTERED_PROD_UI_20191105.csv</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>REGISTERED_PROD_UI_20191105.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="PROGRAM" size="254" source="File: C:\PROJECTS\DATA\ORACLE\REGISTERED_PROD_UI_20191105.csv" type="V_String" />
+            <Field name="CDSID" size="254" source="File: C:\PROJECTS\DATA\ORACLE\REGISTERED_PROD_UI_20191105.csv" type="V_String" />
+            <Field name="ROLE" size="254" source="File: C:\PROJECTS\DATA\ORACLE\REGISTERED_PROD_UI_20191105.csv" type="V_String" />
+            <Field name="REQT_STAT_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\REGISTERED_PROD_UI_20191105.csv" type="V_String" />
+            <Field name="APRVR_TYP_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\REGISTERED_PROD_UI_20191105.csv" type="V_String" />
+            <Field name="APRVL_STAT_C" size="254" source="File: C:\PROJECTS\DATA\ORACLE\REGISTERED_PROD_UI_20191105.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
   </Nodes>
   <Connections>
     <Connection>
@@ -454,60 +298,36 @@ Table=Sheet1</DefaultAnnotationText>
       <Destination ToolID="8" Connection="Input" />
     </Connection>
     <Connection name="#1">
-      <Origin ToolID="7" Connection="Output" />
+      <Origin ToolID="32" Connection="Output" />
       <Destination ToolID="8" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="7" Connection="Output" />
-      <Destination ToolID="3" Connection="Left" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="16" Connection="Output" />
-      <Destination ToolID="3" Connection="Right" />
-    </Connection>
-    <Connection>
       <Origin ToolID="8" Connection="Output" />
-      <Destination ToolID="9" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="8" Connection="Output" />
-      <Destination ToolID="13" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="13" Connection="Output" />
-      <Destination ToolID="14" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="16" Connection="Output" />
-      <Destination ToolID="17" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="16" Connection="Output" />
-      <Destination ToolID="20" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="17" Connection="Output" />
-      <Destination ToolID="18" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="18" Connection="Unique" />
-      <Destination ToolID="24" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="20" Connection="Output" />
-      <Destination ToolID="21" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="21" Connection="Unique" />
-      <Destination ToolID="23" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="21" Connection="Unique" />
-      <Destination ToolID="25" Connection="Input" />
+      <Destination ToolID="30" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="28" Connection="Output" />
       <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="32" Connection="Output" />
+      <Destination ToolID="3" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="36" Connection="Output" />
+      <Destination ToolID="3" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="34" Connection="Output" />
+      <Destination ToolID="35" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="35" Connection="Unique" />
+      <Destination ToolID="33" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="36" Connection="Output" />
+      <Destination ToolID="34" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
