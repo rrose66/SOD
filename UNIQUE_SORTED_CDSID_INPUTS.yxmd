@@ -8,7 +8,7 @@
       <Properties>
         <Configuration>
           <Passwords />
-          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\GitHub\SOD\SOD_v15\CLEAN_SOURCES_OF_TRUTH\*.txt</File>
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\PROJECTS\GitHub\SOD\SOD_v15\CLEAN_SOURCES_OF_TRUTH\*.CSV</File>
           <FormatSpecificOptions>
             <CodePage>28591</CodePage>
             <Delimeter>,</Delimeter>
@@ -22,12 +22,12 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>*.txt</DefaultAnnotationText>
+          <DefaultAnnotationText>*.CSV</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="Field_1" size="254" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\CLEAN_SOURCES_OF_TRUTH\*.txt" type="V_String" />
+            <Field name="Field_1" size="254" source="File: C:\PROJECTS\GitHub\SOD\SOD_v15\CLEAN_SOURCES_OF_TRUTH\*.CSV" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
